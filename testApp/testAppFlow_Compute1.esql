@@ -67,13 +67,11 @@ CREATE COMPUTE MODULE testAppFlow_Compute1
 		END FOR;
 		
 		
-		
-		
-		
-		
-		
 		--CALL CopyMessageHeaders();
 		--CALL CopyEntireMessage();
+--		Propagate to terminal 0;
+--		Propagate to terminal 1;
+		
 		RETURN TRUE;
 	END;
 
