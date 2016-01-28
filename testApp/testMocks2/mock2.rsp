@@ -1,0 +1,4 @@
+<out:informat xmlns:out="http://www.opentravel.org/OTA/2003/05" EchoToken="0022CAB34420141126" PrimaryLangID="EN" TimeStamp="2015-01-05T10:16:50.366Z" Version="1.0">
+<code>1</code>
+<text>sampletext</text>
+</out:informat>
