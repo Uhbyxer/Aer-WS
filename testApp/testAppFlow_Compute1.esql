@@ -21,6 +21,77 @@ CREATE COMPUTE MODULE testAppFlow_Compute1
 		DECLARE flightsInODO ROW;
 		DECLARE RPH INT 0;
 		
+		
+		
+		DECLARE tickets ROW;
+		SET tickets.ticket[] = SELECT FIELDVALUE(ticket.FlightSegmentRefNumber) AS RPH_FLIGHT, 
+														FIELDVALUE(ticket.TravelerRefNumber) AS RPH_TRAVELER FROM airReservation.ota:Ticketing[] AS ticket; 
+	
+	
+		DECLARE FLIGHTS_SET ROW;
+		DECLARE FLIGHTS_SET_SIZE INT 0;
+		DECLARE TICKETS_COUNT INT 0;
+		
+		--init array set of indexes
+		FOR t AS tickets.ticket[] DO
+			SET TICKETS_COUNT = TICKETS_COUNT + 1;
+			SET FLIGHTS_SET.VALUE[TICKETS_COUNT] = -1;
+		END FOR;	
+	
+		--build set of flights
+		FOR ticket AS tickets.ticket[] DO
+			SET RPH_FLIGHT = ticket.RPH_FLIGHT;
+			SET RPH_TRAVELER = ticket.RPH_TRAVELER;
+			
+			DECLARE FOUND INT 0;
+			FOR f AS FLIGHTS_SET.VALUE[] DO
+				IF f = RPH_FLIGHT THEN
+					SET FOUND = 1;
+				END IF;	
+			END FOR;
+
+			IF FOUND = 0 THEN
+				SET FLIGHTS_SET_SIZE = FLIGHTS_SET_SIZE + 1;
+				SET FLIGHTS_SET.VALUE[FLIGHTS_SET_SIZE] = RPH_FLIGHT;
+				
+			END IF;	
+		END FOR;	
+		
+		
+		
+		FOR flight AS FLIGHTS_SET.VALUE[] DO
+			SET RPH = FIELDVALUE(odo.RPH);
+		END FOR;
+		
+		
+		DECLARE FOO INT 0;
+		
+		
+--		SET nonEIFlights.flights[firstElement].info[] = SELECT FIELDVALUE(F.FlightNumber) AS flNumber, FIELDVALUE(F.ota:OperatingAirline.Code) AS airline
+--														FROM originDestinations.ota:OriginDestinationOption[] AS OO, OO.ota:FlightSegment[] AS F
+--														WHERE FIELDVALUE(F.ota:OperatingAirline.Code) <> 'EI';
+--														
+--														
+--		
+--		SET location.values[ndx].flight[] = SELECT  FIELDVALUE(FL.RPH) AS RPH, FIELDVALUE(FL.DepartureDateTime) AS DepartureDateTime,
+--											FIELDVALUE(FL.ota:DepartureAirport.LocationCode) AS OriginLocation,
+--											FIELDVALUE(FL.ota:ArrivalAirport.LocationCode) AS DestinationLocation
+--										FROM options.ota:OriginDestinationOption[] AS OD, OD.ota:FlightSegment[] AS FS, 
+--											airReservation.ota:AirItinerary.ota:OriginDestinationOptions.ota:OriginDestinationOption[] AS ODO, ODO.ota:FlightSegment[] AS FL
+--										WHERE 	FIELDVALUE(prc.aac:ApplyPricedOptionTo.OriginDestinationOptionSequence) = FIELDVALUE(ODO.RPH) AND
+--												CAST(FIELDVALUE(FS.FlightNumber) AS INT) = CAST(FIELDVALUE(FL.FlightNumber) AS INT) AND
+--												FIELDVALUE(FS.ota:DepartureAirport.LocationCode) = FIELDVALUE(FL.ota:DepartureAirport.LocationCode) AND 
+--												FIELDVALUE(FS.ota:ArrivalAirport.LocationCode) = FIELDVALUE(FL.ota:ArrivalAirport.LocationCode) ;
+--												
+--												
+--		SET Environment.TRAVELERS.Traveler[] = SELECT FIELDVALUE(T.ota:AirTraveler.PassengerTypeCode) AS paxType, 
+--														FIELDVALUE(T.ota:AirTraveler.RPH) AS paxRPH FROM rqCriteria.ota:Traveler[] AS T; 
+		
+		
+		
+														
+		
+		
 		FOR odo AS odos.ota:OriginDestinationOption[] DO			
 			SET RPH = FIELDVALUE(odo.RPH);
 			

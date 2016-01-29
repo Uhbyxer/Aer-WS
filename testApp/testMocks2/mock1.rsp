@@ -152,11 +152,13 @@
             </out:PaymentDetails>
         </out:Fulfillment>
         
+		
+		<out:Ticketing FlightSegmentRefNumber="2" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="2"/>
+        <out:Ticketing FlightSegmentRefNumber="2" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="3"/>
 		<out:Ticketing FlightSegmentRefNumber="1" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="1"/>
         <out:Ticketing FlightSegmentRefNumber="1" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="2"/>
 		<out:Ticketing FlightSegmentRefNumber="1" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="3"/>
-		<out:Ticketing FlightSegmentRefNumber="2" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="2"/>
-        <out:Ticketing FlightSegmentRefNumber="2" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="3"/>
+
         
 		
 		<out:BookingReferenceID ID="2BQDQF" ID_Context="0022CAB344" Type="14">
