@@ -7,9 +7,7 @@ CREATE COMPUTE MODULE testAppFlow_Compute1
 		DECLARE ota NAMESPACE 'http://www.opentravel.org/OTA/2003/05';
 		DECLARE airReservation REFERENCE TO InputRoot.XMLNSC.ota:OTA_AirBookRS.ota:AirReservation;
 		DECLARE odos REFERENCE TO airReservation.ota:AirItinerary.ota:OriginDestinationOptions;
-		
 		DECLARE travelers REFERENCE TO airReservation.ota:TravelerInfo;
-		
 		
 		DECLARE RPH_FLIGHT INT 0;
 		DECLARE RPH_TRAVELER INT 0;
@@ -20,10 +18,9 @@ CREATE COMPUTE MODULE testAppFlow_Compute1
 		DECLARE TRAVELER_NAME CHARACTER '';
 		DECLARE TRAVELER_TYPE CHARACTER '';
 		
-		
-		
 		DECLARE flightsInODO ROW;
 		DECLARE RPH INT 0;
+		
 		FOR odo AS odos.ota:OriginDestinationOption[] DO			
 			SET RPH = FIELDVALUE(odo.RPH);
 			
@@ -36,14 +33,9 @@ CREATE COMPUTE MODULE testAppFlow_Compute1
 				
 				IF RPH_FLIGHT =  RPH THEN
 					SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[FLIGHT_INDEX].(XMLNSC.Attribute)RPH = RPH;
-					--SET index = index + 1;
 					
-					
-					--SET TRAVELER_INDEX = 1;
 					FOR traveler  AS travelers.ota:AirTraveler[] DO
-						
 						SET TravelerRefNumber = traveler.ota:TravelerRefNumber.(XMLNSC.Attribute)RPH;
-						
 						IF TravelerRefNumber = RPH_TRAVELER THEN 
 							SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[FLIGHT_INDEX].Travelers.Traveler[TRAVELER_INDEX].(XMLNSC.Attribute)RPH = RPH_TRAVELER;
 
@@ -58,19 +50,12 @@ CREATE COMPUTE MODULE testAppFlow_Compute1
 						END IF;	
 						
 					END FOR;	
-					
 				END IF;	
-				
 			END FOR;	
 			
 			SET FLIGHT_INDEX = FLIGHT_INDEX + 1;
 		END FOR;
 		
-		
-		--CALL CopyMessageHeaders();
-		--CALL CopyEntireMessage();
---		Propagate to terminal 0;
---		Propagate to terminal 1;
 		
 		RETURN TRUE;
 	END;
