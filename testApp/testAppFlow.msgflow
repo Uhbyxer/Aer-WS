@@ -11,17 +11,17 @@
       <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="146,157" URLSpecifier="/testApp" parseQueryString="true" validateFailureAction="userTrace">
         <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="275,123" computeExpression="esql://routine/#testAppFlow_Compute.Main" computeMode="destination">
-        <translation xmi:type="utility:ConstantString" string="Compute"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="276,153" computeExpression="esql://routine/#testAppFlow_Compute.Main" computeMode="destination">
+        <translation xmi:type="utility:ConstantString" string="Choose Mock"/>
       </nodes>
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="740,164" validateMaster="none">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
       </nodes>
-      <nodes xmi:type="ComIbmFileRead.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="385,130" inputDirectory="D:\_AerLingus\AerlWS\testApp\testMocks2\" messageDomainProperty="XMLNSC">
-        <translation xmi:type="utility:ConstantString" string="File Read"/>
+      <nodes xmi:type="ComIbmFileRead.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="405,159" inputDirectory="D:\_AerLingus\AerlWS\testApp\testMocks2\" filenamePattern="*.rsp" messageDomainProperty="XMLNSC">
+        <translation xmi:type="utility:ConstantString" string="Read Mock"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="514,139" computeExpression="esql://routine/#testAppFlow_Compute1.Main">
-        <translation xmi:type="utility:ConstantString" string="Compute1"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="474,137" computeExpression="esql://routine/#testAppFlow_Compute1.Main">
+        <translation xmi:type="utility:ConstantString" string="Compute Answer"/>
       </nodes>
       <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="734,268" queueName="TestAppRS_OUT">
         <translation xmi:type="utility:ConstantString" string="MQ Output"/>
