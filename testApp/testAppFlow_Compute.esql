@@ -15,17 +15,13 @@ CREATE COMPUTE MODULE testAppFlow_Compute
 
 			IF pnrValue < 250000 THEN
 				SET OutputLocalEnvironment.Destination.File.Name = 'mock1.rsp';
-			ELSE 
-				IF pnrValue >= 250000 THEN
-					SET OutputLocalEnvironment.Destination.File.Name = 'mock2.rsp';
-				ELSE
-					CALL ThrowServiceException('Invalid pnr value!');	
-				END IF;	
-					
+			ELSEIF pnrValue >= 250000 THEN
+				SET OutputLocalEnvironment.Destination.File.Name = 'mock2.rsp';
+			ELSE
+				CALL ThrowServiceException('pnr is undefined!');	
 			END IF;
 			
 		END IF;		
-
 
 		RETURN TRUE;
 	END;
