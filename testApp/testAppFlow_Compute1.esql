@@ -7,160 +7,46 @@ CREATE COMPUTE MODULE testAppFlow_Compute1
 		DECLARE ota NAMESPACE 'http://www.opentravel.org/OTA/2003/05';
 		DECLARE airReservation REFERENCE TO InputRoot.XMLNSC.ota:OTA_AirBookRS.ota:AirReservation;
 		DECLARE odos REFERENCE TO airReservation.ota:AirItinerary.ota:OriginDestinationOptions;
-		DECLARE travelers REFERENCE TO airReservation.ota:TravelerInfo;
-		
-		DECLARE RPH_FLIGHT INT 0;
-		DECLARE RPH_TRAVELER INT 0;
-		DECLARE FLIGHT_INDEX INT 1;
-		DECLARE TravelerRefNumber INT 0;
-		DECLARE TRAVELER_INDEX INT 0;
-		
-		DECLARE TRAVELER_NAME CHARACTER '';
-		DECLARE TRAVELER_TYPE CHARACTER '';
-		
-		DECLARE flightsInODO ROW;
-		DECLARE RPH INT 0;
 		
 		
-		
-		DECLARE tickets ROW;
-		SET tickets.ticket[] = SELECT FIELDVALUE(ticket.FlightSegmentRefNumber) AS RPH_FLIGHT, 
-														FIELDVALUE(ticket.TravelerRefNumber) AS RPH_TRAVELER FROM airReservation.ota:Ticketing[] AS ticket; 
-	
-	
-		DECLARE FLIGHTS_SET ROW;
-		DECLARE FLIGHTS_SET_SIZE INT 0;
-		DECLARE TICKETS_COUNT INT 0;
-		
-		--init array set of indexes
-		FOR t AS tickets.ticket[] DO
-			SET TICKETS_COUNT = TICKETS_COUNT + 1;
-			SET FLIGHTS_SET.VALUE[TICKETS_COUNT] = -1;
-		END FOR;	
-	
-		--build set
-		FOR ticket AS tickets.ticket[] DO
-			SET RPH_FLIGHT = ticket.RPH_FLIGHT;
-			SET RPH_TRAVELER = ticket.RPH_TRAVELER;
-			
-			DECLARE FOUND INT 0;
-			
-			IF FLIGHTS_SET.VALUE[RPH_FLIGHT] > -1 THEN 
-				SET FOUND = 1;
-			END IF;		
+		DECLARE flightIndex INT 1;
+		FOR odo AS odos.ota:OriginDestinationOption[] DO			
+			DECLARE flightRPH INT FIELDVALUE(odo.RPH);	
 			
 			
-			IF FOUND = 0 THEN
-				SET FLIGHTS_SET_SIZE = FLIGHTS_SET_SIZE + 1;
-				SET FLIGHTS_SET.VALUE[RPH_FLIGHT] = FLIGHTS_SET_SIZE;
+			SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[flightIndex].(XMLNSC.Attribute)RPH = flightRPH;
+			--DECLARE flightsRoot REFERENCE TO OutputRoot.XMLNSC.TestAppRS.Flights.Flight[flightIndex];
+			--SET flightsRoot.(XMLNSC.Attribute)RPH = flightRPH;
+			
+			DECLARE tickets ROW;
+			SET tickets.ticket[] = SELECT FIELDVALUE(ticket.TravelerRefNumber) AS travelerRPH, FIELDVALUE(ticket.PassengerTypeCode) AS travelerType
+								   FROM airReservation.ota:Ticketing[] AS ticket
+								   WHERE FIELDVALUE(ticket.FlightSegmentRefNumber) = flightRPH;
+								   
+			DECLARE ticketIndex INT 1;
+			FOR ticket AS tickets.ticket[] DO
 				
-			END IF;	
-		END FOR;	
-		
-		
-		
-		FOR ticket AS tickets.ticket[] DO
-			SET RPH_FLIGHT = ticket.RPH_FLIGHT;
-			SET RPH_TRAVELER = ticket.TravelerRefNumber;
-			
-			DECLARE FLIGHT_INDEX INT FLIGHTS_SET.VALUE[RPH_FLIGHT];
-			
-			SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[FLIGHT_INDEX].(XMLNSC.Attribute)RPH = RPH_FLIGHT;
-			
-			DECLARE travelers ROW;
-			SET travelers.traveler[] = --SELECT  
-										SELECT * 
-								       FROM airReservation.ota:TravelerInfo.ota:AirTraveler[] AS traveler, traveler.ota:PersonName AS person
-								      ; --WHERE traveler.ota:TravelerRefNumber.(XMLNSC.Attribute)RPH = RPH_TRAVELER; 
+				SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[flightIndex].Travelers.Traveler[ticketIndex].(XMLNSC.Attribute)RPH = ticket.travelerRPH;
 				
+				DECLARE travelers ROW;
+				SET travelers.traveler[] = SELECT traveler.ota:PersonName.ota:GivenName as travelerName
+								           FROM airReservation.ota:TravelerInfo.ota:AirTraveler[] AS traveler 
+								           WHERE traveler.ota:TravelerRefNumber.(XMLNSC.Attribute)RPH = ticket.travelerRPH;
+								           
+				SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[flightIndex].Travelers.Traveler[ticketIndex].(XMLNSC.Attribute)Name = travelers.traveler[1].travelerName;
 				
-			DECLARE personName CHAR '';					       
-			FOR traveler AS travelers.traveler[] DO
-				SET personName = traveler.person.ota.GivenName;
-				DECLARE FOO INT 0;
-			END FOR;						       
-			
-			
-		END FOR;	
-			
-		DECLARE FOO INT 0;
-		
---		SET nonEIFlights.flights[firstElement].info[] = SELECT FIELDVALUE(F.FlightNumber) AS flNumber, FIELDVALUE(F.ota:OperatingAirline.Code) AS airline
---														FROM originDestinations.ota:OriginDestinationOption[] AS OO, OO.ota:FlightSegment[] AS F
---														WHERE FIELDVALUE(F.ota:OperatingAirline.Code) <> 'EI';
---														
---														
---		
---		SET location.values[ndx].flight[] = SELECT  FIELDVALUE(FL.RPH) AS RPH, FIELDVALUE(FL.DepartureDateTime) AS DepartureDateTime,
---											FIELDVALUE(FL.ota:DepartureAirport.LocationCode) AS OriginLocation,
---											FIELDVALUE(FL.ota:ArrivalAirport.LocationCode) AS DestinationLocation
---										FROM options.ota:OriginDestinationOption[] AS OD, OD.ota:FlightSegment[] AS FS, 
---											airReservation.ota:AirItinerary.ota:OriginDestinationOptions.ota:OriginDestinationOption[] AS ODO, ODO.ota:FlightSegment[] AS FL
---										WHERE 	FIELDVALUE(prc.aac:ApplyPricedOptionTo.OriginDestinationOptionSequence) = FIELDVALUE(ODO.RPH) AND
---												CAST(FIELDVALUE(FS.FlightNumber) AS INT) = CAST(FIELDVALUE(FL.FlightNumber) AS INT) AND
---												FIELDVALUE(FS.ota:DepartureAirport.LocationCode) = FIELDVALUE(FL.ota:DepartureAirport.LocationCode) AND 
---												FIELDVALUE(FS.ota:ArrivalAirport.LocationCode) = FIELDVALUE(FL.ota:ArrivalAirport.LocationCode) ;
---												
---												
---		SET Environment.TRAVELERS.Traveler[] = SELECT FIELDVALUE(T.ota:AirTraveler.PassengerTypeCode) AS paxType, 
---														FIELDVALUE(T.ota:AirTraveler.RPH) AS paxRPH FROM rqCriteria.ota:Traveler[] AS T; 
-		
-		
-		
-														
-		
-		
---		FOR odo AS odos.ota:OriginDestinationOption[] DO			
---			SET RPH = FIELDVALUE(odo.RPH);
---			
---			DECLARE index INT 1;
---			SET TRAVELER_INDEX = 1;
---			
---			FOR ticket AS airReservation.ota:Ticketing[] DO
---				SET RPH_FLIGHT = FIELDVALUE(ticket.FlightSegmentRefNumber);
---				SET RPH_TRAVELER = FIELDVALUE(ticket.TravelerRefNumber);
---				
---				IF RPH_FLIGHT =  RPH THEN
---					SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[FLIGHT_INDEX].(XMLNSC.Attribute)RPH = RPH;
---					
---					FOR traveler  AS travelers.ota:AirTraveler[] DO
---						SET TravelerRefNumber = traveler.ota:TravelerRefNumber.(XMLNSC.Attribute)RPH;
---						IF TravelerRefNumber = RPH_TRAVELER THEN 
---							SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[FLIGHT_INDEX].Travelers.Traveler[TRAVELER_INDEX].(XMLNSC.Attribute)RPH = RPH_TRAVELER;
---
---							SET TRAVELER_NAME = traveler.ota:PersonName.ota:GivenName;
---							SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[FLIGHT_INDEX].Travelers.Traveler[TRAVELER_INDEX].(XMLNSC.Attribute)Name = TRAVELER_NAME;
---							
---							
---							SET TRAVELER_TYPE = traveler.(XMLNSC.Attribute)PassengerTypeCode;
---							SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[FLIGHT_INDEX].Travelers.Traveler[TRAVELER_INDEX].(XMLNSC.Attribute)Type = TRAVELER_TYPE;
---							
---							SET TRAVELER_INDEX = TRAVELER_INDEX + 1;
---						END IF;	
---						
---					END FOR;	
---				END IF;	
---			END FOR;	
---			
---			SET FLIGHT_INDEX = FLIGHT_INDEX + 1;
---		END FOR;
-		
+				SET OutputRoot.XMLNSC.TestAppRS.Flights.Flight[flightIndex].Travelers.Traveler[ticketIndex].(XMLNSC.Attribute)Type = ticket.travelerType;	
+				
+				SET ticketIndex = ticketIndex + 1;			
+			END FOR;						   
+								   
+			SET flightIndex = flightIndex + 1;					    
+				
+		END FOR;
+
 		RETURN TRUE;
 	END;
 
-	CREATE PROCEDURE CopyMessageHeaders() BEGIN
-		DECLARE I INTEGER 1;
-		DECLARE J INTEGER;
-		SET J = CARDINALITY(InputRoot.*[]);
-		WHILE I < J DO
-			SET OutputRoot.*[I] = InputRoot.*[I];
-			SET I = I + 1;
-		END WHILE;
-	END;
-
-	CREATE PROCEDURE CopyEntireMessage() BEGIN
-		SET OutputRoot = InputRoot;
-	END;
 END MODULE;
 
 
