@@ -1,0 +1,34 @@
+
+CREATE COMPUTE MODULE ErrorHandler
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE InsertText CHARACTER '';
+		DECLARE Path REFERENCE TO InputExceptionList.*[1];
+		CREATE FIELD OutputRoot.XMLNSC.TestAppRS;
+      	DECLARE errorMessage REFERENCE TO OutputRoot.XMLNSC.TestAppRS;
+      	SET errorMessage.RequestPayload   =  InputRoot.XMLNSC ;
+      	
+     	WHILE Path.Number IS NOT NULL DO
+	      SET errorMessage.ERROR.ErrorCode		=  CAST(Path.Number AS CHARACTER);
+	      SET errorMessage.ERROR.ErrorText		=  Path.Text;
+	      
+	      IF EXISTS(Path.Insert.*[]) THEN
+	          	FOR rInsert AS Path.Insert[]
+					DO
+					SET InsertText = rInsert.Text;
+					IF(InsertText <> '') THEN
+						SET errorMessage.ERROR.ErrorText = errorMessage.ERROR.ErrorText|| ' :: ' || rInsert.Text;
+					END IF;	
+				END FOR; 
+	      END IF;
+	     
+	      -- Move to the last child of the field to which it currently points 
+	      MOVE Path LASTCHILD; 
+          
+		END WHILE; 
+        --SET errorMessage.ERROR.ErrorDetailMessage	=  InputExceptionList;      	
+		
+		RETURN TRUE;
+	END;
+
+END MODULE;
