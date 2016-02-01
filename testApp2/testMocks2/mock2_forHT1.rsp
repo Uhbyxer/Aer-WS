@@ -1,0 +1,465 @@
+<out:OTA_AirBookRS 
+    xmlns:out="http://www.opentravel.org/OTA/2003/05" EchoToken="0022CAB34420141126" PrimaryLangID="EN" TimeStamp="2015-01-05T10:16:50.366Z" Version="1.0">
+    <out:Success/>
+    <out:AirReservation LastModified="2015-01-05T10:16:50.366Z" CreateDateTime="2014-11-26T14:41:00Z">
+        <out:AirItinerary>
+            <out:OriginDestinationOptions>
+                <out:OriginDestinationOption RPH="1">
+                    <out:FlightSegment ArrivalDateTime="2050-01-10T13:30:00+00:00" ConnectionType="DEST" DateChangeNbr="0" DepartureDateTime="2050-01-10T12:10:00+00:00" FlightNumber="0105" NumberInParty="1" ResBookDesigCode="C" 
+					RPH="1" Status="HK">
+                        <out:DepartureAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
+                        <out:ArrivalAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
+                        <out:OperatingAirline Code="EI" FlightNumber="0105"></out:OperatingAirline>
+                        <out:MarketingAirline Code="EI"/>
+                        <out:Comment>LK-  /E</out:Comment>
+                    </out:FlightSegment>
+					<out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1"
+					ResBookDesigCode="T" RPH="2" Status="HK">
+                        <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
+                        <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
+                        <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
+                        <out:MarketingAirline Code="EI"/>
+                        <out:Comment>LK-  /E</out:Comment>
+                    </out:FlightSegment>
+					<out:FlightSegment ArrivalDateTime="2050-01-10T13:30:00+00:00" ConnectionType="DEST" DateChangeNbr="0" DepartureDateTime="2050-01-10T12:10:00+00:00" FlightNumber="0105" NumberInParty="1"
+					ResBookDesigCode="C" RPH="3" Status="HK">
+                        <out:DepartureAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
+                        <out:ArrivalAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
+                        <out:OperatingAirline Code="EI" FlightNumber="0105"></out:OperatingAirline>
+                        <out:MarketingAirline Code="EI"/>
+                        <out:Comment>LK-  /E</out:Comment>
+                    </out:FlightSegment>
+                </out:OriginDestinationOption>
+                <out:OriginDestinationOption RPH="2">
+                    <out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1" 
+					ResBookDesigCode="T" RPH="4" Status="HK">
+                        <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
+                        <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
+                        <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
+                        <out:MarketingAirline Code="EI"/>
+                        <out:Comment>LK-  /E</out:Comment>
+                    </out:FlightSegment>
+					<out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1" 
+					ResBookDesigCode="T" RPH="5" Status="HK">
+                        <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
+                        <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
+                        <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
+                        <out:MarketingAirline Code="EI"/>
+                        <out:Comment>LK-  /E</out:Comment>
+                    </out:FlightSegment>
+					    <out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1"
+						ResBookDesigCode="T" RPH="6" Status="HK">
+                        <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
+                        <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
+                        <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
+                        <out:MarketingAirline Code="EI"/>
+                        <out:Comment>LK-  /E</out:Comment>
+                    </out:FlightSegment>
+                </out:OriginDestinationOption>                
+            </out:OriginDestinationOptions>
+        </out:AirItinerary>
+        <out:PriceInfo>
+            <out:ItinTotalFare>
+                <out:BaseFare Amount="14.98" CurrencyCode="EUR"/>
+                <out:TotalFare Amount="197.98" CurrencyCode="EUR"/>
+            </out:ItinTotalFare>
+            <out:PTC_FareBreakdowns>
+                <out:PTC_FareBreakdown>
+                    <out:PassengerTypeQuantity Code="ADT"/>
+                    <out:FareBasisCodes>
+                        <out:FareBasisCode FlightSegmentRPH="1">USBR</out:FareBasisCode>
+                    </out:FareBasisCodes>
+                </out:PTC_FareBreakdown>
+                <out:PTC_FareBreakdown>
+                    <out:PassengerTypeQuantity Code="ADT"/>
+                    <out:FareBasisCodes>
+                        <out:FareBasisCode FlightSegmentRPH="2">ZA26USBR</out:FareBasisCode>
+                    </out:FareBasisCodes>
+                </out:PTC_FareBreakdown>
+                <out:PTC_FareBreakdown>
+                    <out:PassengerTypeQuantity Code="ADT" Quantity="1"/>
+                    <out:PassengerFare>
+                        <out:BaseFare Amount="14.98" CurrencyCode="EUR"/>
+                        <out:Taxes>
+                            <out:Tax Amount="16.95" CurrencyCode="EUR" TaxCode="UP"/>
+                            <out:Tax Amount="44.39" CurrencyCode="EUR" TaxCode="YQ"/>
+                            <out:Tax Amount="16.59" TaxCode="GB"/>
+                            <out:Tax Amount="41.07" TaxCode="UB"/>
+                        </out:Taxes>
+                        <out:UnstructuredFareCalc>DUB EI LHR 9.99TA26PLUS EI DUB 4.99ZA26PLUS EUR 14.98 END ROE1.000000 XTGB16.59UB41.07 </out:UnstructuredFareCalc>
+                        <out:Remark>EUR 57.66 XT</out:Remark>
+                    </out:PassengerFare>
+                    <out:TravelerRefNumber RPH="1"/>
+                    <out:Endorsements>
+                        <out:Endorsement>NO RFND/CHG FEE APPLIES</out:Endorsement>
+                        <out:Endorsement>CXL BY FLT DT OR NO VALUE</out:Endorsement>
+                    </out:Endorsements>
+                </out:PTC_FareBreakdown>
+                <out:PTC_FareBreakdown>
+                    <out:PassengerTypeQuantity Code="ADT"/>
+                    <out:FareInfo>
+                        <out:FareInfo FareType="PLS"/>
+                        <out:PassengerFare TotalNbrPTC="1"/>
+                    </out:FareInfo>
+                </out:PTC_FareBreakdown>
+                <out:PTC_FareBreakdown>
+                    <out:PassengerTypeQuantity Code="ADT"/>
+                    <out:FareInfo>
+                        <out:FareInfo FareType="PLS"/>
+                        <out:PassengerFare TotalNbrPTC="1"/>
+                    </out:FareInfo>
+                </out:PTC_FareBreakdown>
+            </out:PTC_FareBreakdowns>
+        </out:PriceInfo>
+        <out:TravelerInfo>
+            <out:AirTraveler GroupInd="false" PassengerTypeCode="ADT">
+                <out:PersonName>
+                    <out:GivenName>MAURA</out:GivenName>
+                    <out:Surname>BOYERS</out:Surname>
+                    <out:NameTitle>MRS</out:NameTitle>
+                </out:PersonName>
+                <out:Telephone AreaCityCode="87" CountryAccessCode="353" PhoneNumber="2794585" Remark="M"/>
+                <out:Email>MAURABOB@IMAGINE.IE</out:Email>
+                <out:Address>
+                    <out:AddressLine>MAURA BOYERS BOYERS</out:AddressLine>
+                    <out:AddressLine>22 FAIRWAYS PARK</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN NONE</out:AddressLine>
+                    <out:AddressLine>IRELAND</out:AddressLine>
+                    <out:CountryName>IRELAND</out:CountryName>
+                </out:Address>
+                <out:TravelerRefNumber RPH="1"/>
+            </out:AirTraveler>
+			
+            <out:AirTraveler GroupInd="false" PassengerTypeCode="ADT">
+                <out:PersonName>
+                    <out:GivenName>Taras</out:GivenName>
+                    <out:Surname>Grynchuk</out:Surname>
+                    <out:NameTitle>MR</out:NameTitle>
+                </out:PersonName>
+                <out:Telephone AreaCityCode="87" CountryAccessCode="353" PhoneNumber="2794585" Remark="M"/>
+                <out:Email>MAURABOB@IMAGINE.IE</out:Email>
+                <out:Address>
+                    <out:AddressLine>MAURA BOYERS BOYERS</out:AddressLine>
+                    <out:AddressLine>22 FAIRWAYS PARK</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN NONE</out:AddressLine>
+                    <out:AddressLine>IRELAND</out:AddressLine>
+                    <out:CountryName>IRELAND</out:CountryName>
+                </out:Address>
+                <out:TravelerRefNumber RPH="2"/>
+            </out:AirTraveler>
+			
+			
+            <out:AirTraveler GroupInd="false" PassengerTypeCode="ADT">
+                <out:PersonName>
+                    <out:GivenName>Oleg</out:GivenName>
+                    <out:Surname>Maksymuk</out:Surname>
+                    <out:NameTitle>MR</out:NameTitle>
+                </out:PersonName>
+                <out:Telephone AreaCityCode="87" CountryAccessCode="353" PhoneNumber="2794585" Remark="M"/>
+                <out:Email>MAURABOB@IMAGINE.IE</out:Email>
+                <out:Address>
+                    <out:AddressLine>MAURA BOYERS BOYERS</out:AddressLine>
+                    <out:AddressLine>22 FAIRWAYS PARK</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN NONE</out:AddressLine>
+                    <out:AddressLine>IRELAND</out:AddressLine>
+                    <out:CountryName>IRELAND</out:CountryName>
+                </out:Address>
+                <out:TravelerRefNumber RPH="3"/>
+            </out:AirTraveler>	
+
+            <out:AirTraveler GroupInd="false" PassengerTypeCode="ADT">
+                <out:PersonName>
+                    <out:GivenName>Ihor</out:GivenName>
+                    <out:Surname>Sereda</out:Surname>
+                    <out:NameTitle>MR</out:NameTitle>
+                </out:PersonName>
+                <out:Telephone AreaCityCode="87" CountryAccessCode="353" PhoneNumber="2794585" Remark="M"/>
+                <out:Email>MAURABOB@IMAGINE.IE</out:Email>
+                <out:Address>
+                    <out:AddressLine>MAURA BOYERS BOYERS</out:AddressLine>
+                    <out:AddressLine>22 FAIRWAYS PARK</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN NONE</out:AddressLine>
+                    <out:AddressLine>IRELAND</out:AddressLine>
+                    <out:CountryName>IRELAND</out:CountryName>
+                </out:Address>
+                <out:TravelerRefNumber RPH="4"/>
+            </out:AirTraveler>		
+
+            <out:AirTraveler GroupInd="false" PassengerTypeCode="ADT">
+                <out:PersonName>
+                    <out:GivenName>Pavlo</out:GivenName>
+                    <out:Surname>Pokotylo</out:Surname>
+                    <out:NameTitle>MR</out:NameTitle>
+                </out:PersonName>
+                <out:Telephone AreaCityCode="87" CountryAccessCode="353" PhoneNumber="2794585" Remark="M"/>
+                <out:Email>MAURABOB@IMAGINE.IE</out:Email>
+                <out:Address>
+                    <out:AddressLine>MAURA BOYERS BOYERS</out:AddressLine>
+                    <out:AddressLine>22 FAIRWAYS PARK</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN NONE</out:AddressLine>
+                    <out:AddressLine>IRELAND</out:AddressLine>
+                    <out:CountryName>IRELAND</out:CountryName>
+                </out:Address>
+                <out:TravelerRefNumber RPH="5"/>
+            </out:AirTraveler>	
+
+            <out:AirTraveler GroupInd="false" PassengerTypeCode="ADT">
+                <out:PersonName>
+                    <out:GivenName>Maksym</out:GivenName>
+                    <out:Surname>Borskiy</out:Surname>
+                    <out:NameTitle>MR</out:NameTitle>
+                </out:PersonName>
+                <out:Telephone AreaCityCode="87" CountryAccessCode="353" PhoneNumber="2794585" Remark="M"/>
+                <out:Email>MAURABOB@IMAGINE.IE</out:Email>
+                <out:Address>
+                    <out:AddressLine>MAURA BOYERS BOYERS</out:AddressLine>
+                    <out:AddressLine>22 FAIRWAYS PARK</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN</out:AddressLine>
+                    <out:AddressLine>BETTYSTOWN NONE</out:AddressLine>
+                    <out:AddressLine>IRELAND</out:AddressLine>
+                    <out:CountryName>IRELAND</out:CountryName>
+                </out:Address>
+                <out:TravelerRefNumber RPH="6"/>
+            </out:AirTraveler>				
+        </out:TravelerInfo>
+        <out:Fulfillment>
+            <out:PaymentDetails>
+                <out:PaymentDetail>
+                    <out:PaymentCard ExpireDate="0716">
+                        <out:CardType Code="VI">Other_</out:CardType>
+                        <out:CardNumber>
+                            <out:PlainText>1*VI************6610/0716</out:PlainText>
+                        </out:CardNumber>
+                    </out:PaymentCard>
+                    <out:PaymentAmount Amount="197.98" CurrencyCode="EUR"/>
+                </out:PaymentDetail>
+            </out:PaymentDetails>
+        </out:Fulfillment>
+		
+		<out:Ticketing FlightSegmentRefNumber="5" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="2"/>		
+		<out:Ticketing FlightSegmentRefNumber="3" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="4"/>
+        <out:Ticketing FlightSegmentRefNumber="2" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="5"/>
+		<out:Ticketing FlightSegmentRefNumber="1" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="2"/>
+		<out:Ticketing FlightSegmentRefNumber="4" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="2"/>
+        <out:Ticketing FlightSegmentRefNumber="5" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="3"/>
+		<out:Ticketing FlightSegmentRefNumber="5" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="4"/>	
+		<out:Ticketing FlightSegmentRefNumber="3" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="1"/>
+        <out:Ticketing FlightSegmentRefNumber="2" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="1"/>
+		<out:Ticketing FlightSegmentRefNumber="1" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="6"/>
+		<out:Ticketing FlightSegmentRefNumber="4" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C1" TicketingStatus="E" TravelerRefNumber="5"/>
+        <out:Ticketing FlightSegmentRefNumber="5" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="6"/>	
+		<out:Ticketing FlightSegmentRefNumber="6" PassengerTypeCode="ADT" TicketDocumentNbr="05324767523863C2" TicketingStatus="E" TravelerRefNumber="6"/>		
+		
+        <out:BookingReferenceID ID="2BQDQF" ID_Context="0022CAB344" Type="14">
+            <out:TPA_Extensions PnrPk="0022CAB34420141126">
+                <out:TripSummary Destination="LHR" Origin="DUB"/>
+                <out:AerLingusOSI Code="PLUS">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>O-CBG SFE</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="PLUS">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>R-CBG SFE</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="FFM">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>ARKUP ADT DUBLHR TA26PLUS EUR25.00 O-</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="FFM">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>ARKUP ADT LHRDUB ZA26PLUS EUR25.00 R-</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="HANDLING FEE">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>EUR14.00</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="TKT/">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>ETK</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="SAR,FFM,EUR">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>50.00/ET/MRR783897/141126/CCVI</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="SAR,CBM,EUR">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>0.00/ET/MRR783898/141126/CCVI</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="WIN">
+                    <out:Airline Code="EI" Division="true">EI</out:Airline>
+                    <out:Text>CUSTOMER POLICY ALSIE1000041854</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="FFM">
+                    <out:Airline Code="EI" Division="false">EI</out:Airline>
+                    <out:Text>U 01 FARE FAMILY PLUS FEE</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="AFRO">
+                    <out:Airline Code="EI" Division="false">EI</out:Airline>
+                    <out:Text>EUR/F9.99/X16.95UP/Y17.05YQ/T43.99</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="AFRI">
+                    <out:Airline Code="EI" Division="false">EI</out:Airline>
+                    <out:Text>EUR/F4.99/X16.59GB/Y41.07UB/Z27.34YQ/T89.99</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="AFRT">
+                    <out:Airline Code="EI" Division="false">EI</out:Airline>
+                    <out:Text>EUR/F14.98/X16.95UP/Y44.39YQ/Z57.66XT/T133.98</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="TDPRCD">
+                    <out:Airline Code="EI" Division="false">EI</out:Airline>
+                    <out:Text>A006298271</out:Text>
+                </out:AerLingusOSI>
+                <out:AerLingusOSI Code="EMAIL">
+                    <out:Airline Code="EI" Division="false">EI</out:Airline>
+                    <out:Text>SENT FROM ASTRAL </out:Text>
+                </out:AerLingusOSI>
+                <out:EMD_Original EMD_Type="EMD-A" Quantity="1" RPH="1" TotalFltSegQty="0">
+                    <out:PaymentDetail>
+                        <out:PaymentCard>
+                            <out:CardType Code="CCVI">Other_</out:CardType>
+                        </out:PaymentCard>
+                        <out:PaymentAmount Amount="50.00" CurrencyCode="EUR"/>
+                    </out:PaymentDetail>
+                    <out:TicketDocument DateOfIssue="2014-11-26" TicketDocumentNbr="783897">
+                        <out:CouponInfo Value="50.00">
+                            <out:SoldFlightSegmentRPH>0</out:SoldFlightSegmentRPH>
+                        </out:CouponInfo>
+                    </out:TicketDocument>
+                </out:EMD_Original>
+                <out:EMD_Original EMD_Type="EMD-A" Quantity="1" RPH="1" TotalFltSegQty="0">
+                    <out:PaymentDetail>
+                        <out:PaymentCard>
+                            <out:CardType Code="CCVI">Other_</out:CardType>
+                        </out:PaymentCard>
+                        <out:PaymentAmount Amount="0.00" CurrencyCode="EUR"/>
+                    </out:PaymentDetail>
+                    <out:TicketDocument DateOfIssue="2014-11-26" TicketDocumentNbr="783898">
+                        <out:CouponInfo Value="0.00">
+                            <out:SoldFlightSegmentRPH>1</out:SoldFlightSegmentRPH>
+                            <out:ReasonForIssuance Description="WSMB"/>
+                        </out:CouponInfo>
+                    </out:TicketDocument>
+                </out:EMD_Original>
+                <out:EMD_Original EMD_Type="EMD-A" Quantity="1" RPH="1" TotalFltSegQty="0">
+                    <out:PaymentDetail>
+                        <out:PaymentCard>
+                            <out:CardType Code="CCVI">Other_</out:CardType>
+                        </out:PaymentCard>
+                        <out:PaymentAmount Amount="0.00" CurrencyCode="EUR"/>
+                    </out:PaymentDetail>
+                    <out:TicketDocument DateOfIssue="2014-11-26" TicketDocumentNbr="783898">
+                        <out:CouponInfo Value="0.00">
+                            <out:SoldFlightSegmentRPH>2</out:SoldFlightSegmentRPH>
+                            <out:ReasonForIssuance Description="WSMB"/>
+                        </out:CouponInfo>
+                    </out:TicketDocument>
+                </out:EMD_Original>
+            </out:TPA_Extensions>
+        </out:BookingReferenceID>
+        <out:BookingReferenceID ID="0022CAB34420141126" ID_Context="PNRPK" Type="14"/>
+        <out:BookingReferenceID ID="A006298271" ID_Context="Datalex" Type="13"/>
+        <out:EMD_Info EMD_Type="EMD-A" TotalFltSegQty="0">
+            <out:TravelerRefNumber RPH="0"/>
+            <out:TicketDocument Code="CCG" DateOfIssue="2014-11-26Z" TicketDocumentNbr="783896" Type="EMD">
+                <out:CouponInfo Value="14">
+                    <out:SoldFlightSegmentRPH>1</out:SoldFlightSegmentRPH>
+                </out:CouponInfo>
+            </out:TicketDocument>
+        </out:EMD_Info>
+        <out:EMD_Info EMD_Type="EMD-A" TotalFltSegQty="0">
+            <out:TravelerRefNumber RPH="0"/>
+            <out:TicketDocument Code="FFM" DateOfIssue="2014-11-26Z" TicketDocumentNbr="783897" Type="EMD">
+                <out:CouponInfo Value="50">
+                    <out:SoldFlightSegmentRPH>1</out:SoldFlightSegmentRPH>
+                </out:CouponInfo>
+            </out:TicketDocument>
+        </out:EMD_Info>
+        <out:EMD_Info EMD_Type="EMD-A" TotalFltSegQty="0">
+            <out:TravelerRefNumber RPH="0"/>
+            <out:TicketDocument Code="CBM" DateOfIssue="2014-11-26Z" TicketDocumentNbr="783898" Type="EMD">
+                <out:CouponInfo Value="0">
+                    <out:SoldFlightSegmentRPH>1</out:SoldFlightSegmentRPH>
+                </out:CouponInfo>
+            </out:TicketDocument>
+        </out:EMD_Info>
+        <out:EMD_Info TotalFltSegQty="0">
+            <out:TicketDocument Code="T/E" DateOfIssue="2014-11-26" TicketDocumentNbr="6752386" Type="Ticket">
+                <out:CouponInfo/>
+            </out:TicketDocument>
+        </out:EMD_Info>
+        <out:EMD_Info Quantity="1" EMD_Type="EMD-A" RPH="1" TotalFltSegQty="0">
+            <out:TravelerRefNumber RPH="0"/>
+            <out:PaymentDetail>
+                <out:PaymentCard>
+                    <out:CardType Code="CCVI">Other_</out:CardType>
+                </out:PaymentCard>
+                <out:PaymentAmount Amount="50" CurrencyCode="EUR"/>
+            </out:PaymentDetail>
+            <out:TicketDocument Code="FFM" CodeContext="FFMU" DateOfIssue="2014-11-26" TicketDocumentNbr="783897" Type="EMD">
+                <out:CouponInfo Value="50">
+                    <out:SoldFlightSegmentRPH>0</out:SoldFlightSegmentRPH>
+                </out:CouponInfo>
+            </out:TicketDocument>
+        </out:EMD_Info>
+        <out:EMD_Info Quantity="1" EMD_Type="EMD-A" RPH="1" TotalFltSegQty="0">
+            <out:TravelerRefNumber RPH="1"/>
+            <out:PaymentDetail>
+                <out:PaymentCard>
+                    <out:CardType Code="CCVI">Other_</out:CardType>
+                </out:PaymentCard>
+                <out:PaymentAmount Amount="0" CurrencyCode="EUR"/>
+            </out:PaymentDetail>
+            <out:TicketDocument Code="CBM" CodeContext="BGCH" DateOfIssue="2014-11-26" TicketDocumentNbr="783898" Type="EMD">
+                <out:CouponInfo Value="0">
+                    <out:SoldFlightSegmentRPH>1</out:SoldFlightSegmentRPH>
+                    <out:ReasonForIssuance Description="WSMB"/>
+                </out:CouponInfo>
+            </out:TicketDocument>
+        </out:EMD_Info>
+        <out:EMD_Info Quantity="1" EMD_Type="EMD-A" RPH="1" TotalFltSegQty="0">
+            <out:TravelerRefNumber RPH="1"/>
+            <out:PaymentDetail>
+                <out:PaymentCard>
+                    <out:CardType Code="CCVI">Other_</out:CardType>
+                </out:PaymentCard>
+                <out:PaymentAmount Amount="0" CurrencyCode="EUR"/>
+            </out:PaymentDetail>
+            <out:TicketDocument Code="CBM" CodeContext="BGCH" DateOfIssue="2014-11-26" TicketDocumentNbr="783898" Type="EMD">
+                <out:CouponInfo Value="0">
+                    <out:SoldFlightSegmentRPH>2</out:SoldFlightSegmentRPH>
+                    <out:ReasonForIssuance Description="WSMB"/>
+                </out:CouponInfo>
+            </out:TicketDocument>
+        </out:EMD_Info>
+        <ns0:Offer 
+            xmlns:ns0="http://www.opentravel.org/OTA/2003/05">
+            <ns0:Priced>
+                <ns0:ServiceFamily>
+                    <ns0:ProductGroup Code="WIN" Description="CUSTOMER POLICY ALSIE1000041854"/>
+                </ns0:ServiceFamily>
+                <ns0:Pricing OfferQty="1"/>
+            </ns0:Priced>
+            <ns0:Priced FlightSegmentRPH="1" TravelerRPH="1">
+                <ns0:ServiceFamily ServiceCode="A_FreeBaggageAllowance">
+                    <ns0:ProductGroup Code="BGCH">
+                        <ns0:SubGroup Code="WSMB" AdditionalCode="CBM"/>
+                    </ns0:ProductGroup>
+                </ns0:ServiceFamily>
+                <ns0:Pricing Amount="0.000" PricingCurrency="EUR" TravelerRPH="1" OfferQty="1"/>
+            </ns0:Priced>
+            <ns0:Priced FlightSegmentRPH="2" TravelerRPH="1">
+                <ns0:ServiceFamily ServiceCode="A_FreeBaggageAllowance">
+                    <ns0:ProductGroup Code="BGCH">
+                        <ns0:SubGroup Code="WSMB" AdditionalCode="CBM"/>
+                    </ns0:ProductGroup>
+                </ns0:ServiceFamily>
+                <ns0:Pricing Amount="0.000" PricingCurrency="EUR" TravelerRPH="1" OfferQty="1"/>
+            </ns0:Priced>
+        </ns0:Offer>
+    </out:AirReservation>
+</out:OTA_AirBookRS>

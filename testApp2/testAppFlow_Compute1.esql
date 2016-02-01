@@ -1,0 +1,119 @@
+
+
+CREATE COMPUTE MODULE testAppFlow_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE ota NAMESPACE 'http://www.opentravel.org/OTA/2003/05';
+		DECLARE ns0 NAMESPACE 'http://www.opentravel.org/OTA/2003/05';
+		
+		DECLARE airReservation REFERENCE TO InputRoot.XMLNSC.ota:OTA_AirBookRS.ota:AirReservation;
+		DECLARE odos REFERENCE TO airReservation.ota:AirItinerary.ota:OriginDestinationOptions;
+		
+		
+		DECLARE  travelerInfoReference REFERENCE TO airReservation.ota:TravelerInfo;
+		
+		CREATE FIELD OutputRoot.XMLNSC.TestAppRS.Travelers;
+		DECLARE travelersReference REFERENCE TO OutputRoot.XMLNSC.TestAppRS.Travelers;
+		
+		DECLARE products ROW;
+		
+		
+		FOR traveler AS travelerInfoReference.ota:AirTraveler[] DO
+			DECLARE travelerType CHAR traveler.(XMLNSC.Attribute)PassengerTypeCode;		
+			DECLARE travelerName CHAR traveler.ota:PersonName.ota:GivenName;	
+			DECLARE travelerRPH INTEGER traveler.ota:TravelerRefNumber.(XMLNSC.Attribute)RPH;
+			
+			CREATE FIELD travelersReference.Traveler[travelerRPH];
+			DECLARE travelerReference REFERENCE TO travelersReference.Traveler[travelerRPH];
+			
+			
+			SET travelerReference.(XMLNSC.Attribute)RPH = travelerRPH;
+			SET travelerReference.(XMLNSC.Attribute)Name = travelerName;
+			SET travelerReference.(XMLNSC.Attribute)TYPE = travelerType;
+			
+			
+			
+			SET products.product[] = 	SELECT  FIELDVALUE(priced.FlightSegmentRPH) AS flightRPH,
+												FIELDVALUE(priced.ns0:ServiceFamily.ns0:ProductGroup.Code) AS productCode,
+												FIELDVALUE(priced.ns0:ServiceFamily.ns0:ProductGroup.ns0:SubGroup.Code) AS productSubCode
+												
+										FROM	airReservation.ns0:Offer.ns0:Priced[] AS priced
+										WHERE   FIELDVALUE(priced.TravelerRPH) = travelerRPH
+										;
+			
+			CREATE FIELD travelerReference.Products;
+			DECLARE productsReference REFERENCE TO travelerReference.Products;
+			
+			DECLARE productIndex INTEGER 1;
+			FOR product AS products.product[] DO
+				CREATE FIELD productsReference.Product[productIndex];
+				DECLARE productReference REFERENCE TO productsReference.Product[productIndex];
+				
+				SET productReference.(XMLNSC.Attribute)FlightRPH = product.flightRPH;
+				SET productReference.(XMLNSC.Attribute)ProductCode = product.productCode;
+				SET productReference.(XMLNSC.Attribute)ProductSubCode = product.productSubCode;				
+								
+				SET productIndex = productIndex + 1;
+			END FOR;								
+			
+			
+		END FOR;		
+
+								   									
+								   											
+		
+		
+--		
+--		
+--		
+--		DECLARE flightInfo ROW;
+--		DECLARE flightIndex INT 1;
+--		
+--		CREATE FIELD OutputRoot.XMLNSC.TestAppRS.Flights;
+--		DECLARE flightsReference REFERENCE TO OutputRoot.XMLNSC.TestAppRS.Flights;
+--		
+--		FOR odo AS odos.ota:OriginDestinationOption[] DO
+--			FOR flSeg AS odo.ota:FlightSegment[] DO
+--				
+--			SET flightInfo.{FIELDVALUE(flSeg.RPH)}.flight[] = SELECT FIELDVALUE(ticket.TravelerRefNumber) AS travelerRPH, 
+--																	FIELDVALUE(ticket.PassengerTypeCode) AS travelerType,
+--																	FIELDVALUE(traveler.ota:PersonName.ota:GivenName) AS travelerName
+--								   							  FROM  airReservation.ota:Ticketing[] AS ticket, 
+--								   								    airReservation.ota:TravelerInfo.ota:AirTraveler[] AS traveler 
+--								   							  WHERE FIELDVALUE(ticket.FlightSegmentRefNumber) = FIELDVALUE(flSeg.RPH) AND
+--								   									FIELDVALUE(ticket.TravelerRefNumber) = FIELDVALUE(traveler.ota:TravelerRefNumber.RPH); 		
+--								   									
+--								   									
+--			CREATE FIELD flightsReference.Flight[flightIndex];
+--			DECLARE flightReference REFERENCE TO flightsReference.Flight[flightIndex];
+--			
+--			SET flightReference.(XMLNSC.Attribute)RPH = FIELDVALUE(flSeg.RPH);
+--			
+--			DECLARE travelerIndex INT 1;
+--			FOR traveler AS flightInfo.{FIELDVALUE(flSeg.RPH)}.flight[] DO
+--				
+--				CREATE FIELD flightReference.Travelers.Traveler[travelerIndex];
+--				DECLARE travelerReference REFERENCE TO flightReference.Travelers.Traveler[travelerIndex];
+--				
+--				SET travelerReference.(XMLNSC.Attribute)RPH = traveler.travelerRPH;
+--				SET travelerReference.(XMLNSC.Attribute)Name = traveler.travelerName;
+--				SET travelerReference.(XMLNSC.Attribute)Type = traveler.travelerType;	
+--				
+--				SET travelerIndex = travelerIndex + 1;
+--			END FOR;	
+--								   				
+--			SET flightIndex = flightIndex + 1;	
+--			END FOR;	
+--		END FOR;				
+--			
+		RETURN TRUE;
+END;
+
+END MODULE;
+
+
+
+
+
+

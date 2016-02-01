@@ -1,0 +1,33 @@
+
+
+
+
+CREATE COMPUTE MODULE testAppFlow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+		DECLARE pnrValue CHARACTER InputLocalEnvironment.HTTP.Input.QueryString.pnr;
+
+		IF LENGTH(pnrValue) <> 6 OR NOT STARTSWITH(pnrValue, '2') THEN
+			CALL ThrowServiceException('Invalid pnr value!');
+		ELSE
+			SET Environment.PNR = pnrValue;
+
+			IF pnrValue < 250000 THEN
+				SET OutputLocalEnvironment.Destination.File.Name = 'mock1.rsp';
+			ELSEIF pnrValue >= 250000 THEN
+				SET OutputLocalEnvironment.Destination.File.Name = 'mock2.rsp';
+			ELSE
+				CALL ThrowServiceException('pnr is undefined!');	
+			END IF;
+			
+		END IF;		
+
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE ThrowServiceException(IN error CHAR)
+	BEGIN
+		THROW EXCEPTION VALUES(error);
+	END;
+END MODULE;
