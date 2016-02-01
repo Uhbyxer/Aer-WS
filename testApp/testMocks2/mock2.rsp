@@ -13,30 +13,16 @@
                         <out:MarketingAirline Code="EI"/>
                         <out:Comment>LK-  /E</out:Comment>
                     </out:FlightSegment>
-                </out:OriginDestinationOption>
-                <out:OriginDestinationOption RPH="2">
-                    <out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1" ResBookDesigCode="T" RPH="2" Status="HK">
+					<out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1"
+					ResBookDesigCode="T" RPH="2" Status="HK">
                         <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
                         <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
                         <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
                         <out:MarketingAirline Code="EI"/>
                         <out:Comment>LK-  /E</out:Comment>
                     </out:FlightSegment>
-                </out:OriginDestinationOption>
-				
-                <out:OriginDestinationOption RPH="3">
-                    <out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1" ResBookDesigCode="T" RPH="2" Status="HK">
-                        <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
-                        <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
-                        <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
-                        <out:MarketingAirline Code="EI"/>
-                        <out:Comment>LK-  /E</out:Comment>
-                    </out:FlightSegment>
-                </out:OriginDestinationOption>
-				
-				
-                <out:OriginDestinationOption RPH="4">
-                    <out:FlightSegment ArrivalDateTime="2050-01-10T13:30:00+00:00" ConnectionType="DEST" DateChangeNbr="0" DepartureDateTime="2050-01-10T12:10:00+00:00" FlightNumber="0105" NumberInParty="1" ResBookDesigCode="C" RPH="1" Status="HK">
+					<out:FlightSegment ArrivalDateTime="2050-01-10T13:30:00+00:00" ConnectionType="DEST" DateChangeNbr="0" DepartureDateTime="2050-01-10T12:10:00+00:00" FlightNumber="0105" NumberInParty="1"
+					ResBookDesigCode="C" RPH="3" Status="HK">
                         <out:DepartureAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
                         <out:ArrivalAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
                         <out:OperatingAirline Code="EI" FlightNumber="0105"></out:OperatingAirline>
@@ -44,27 +30,32 @@
                         <out:Comment>LK-  /E</out:Comment>
                     </out:FlightSegment>
                 </out:OriginDestinationOption>
-                <out:OriginDestinationOption RPH="5">
-                    <out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1" ResBookDesigCode="T" RPH="2" Status="HK">
+                <out:OriginDestinationOption RPH="2">
+                    <out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1" 
+					ResBookDesigCode="T" RPH="4" Status="HK">
                         <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
                         <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
                         <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
                         <out:MarketingAirline Code="EI"/>
                         <out:Comment>LK-  /E</out:Comment>
                     </out:FlightSegment>
-                </out:OriginDestinationOption>
-				
-                <out:OriginDestinationOption RPH="6">
-                    <out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1" ResBookDesigCode="T" RPH="2" Status="HK">
+					<out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1" 
+					ResBookDesigCode="T" RPH="5" Status="HK">
                         <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
                         <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
                         <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
                         <out:MarketingAirline Code="EI"/>
                         <out:Comment>LK-  /E</out:Comment>
                     </out:FlightSegment>
-                </out:OriginDestinationOption>				
-
-				
+					    <out:FlightSegment ArrivalDateTime="2050-01-11T19:05:00+00:00" ConnectionType="LASTDEST" DateChangeNbr="0" DepartureDateTime="2050-01-11T17:45:00+00:00" FlightNumber="0132" NumberInParty="1"
+						ResBookDesigCode="T" RPH="6" Status="HK">
+                        <out:DepartureAirport City="LONDON" LocationCode="LHR" Name="HEATHROW" Terminal="TERMINAL 2"/>
+                        <out:ArrivalAirport City="DUBLIN" LocationCode="DUB" Terminal="TERMINAL 2"/>
+                        <out:OperatingAirline Code="EI" FlightNumber="0132"></out:OperatingAirline>
+                        <out:MarketingAirline Code="EI"/>
+                        <out:Comment>LK-  /E</out:Comment>
+                    </out:FlightSegment>
+                </out:OriginDestinationOption>                
             </out:OriginDestinationOptions>
         </out:AirItinerary>
         <out:PriceInfo>
