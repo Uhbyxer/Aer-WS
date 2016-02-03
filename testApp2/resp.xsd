@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="TestAppRS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Travelers"/>
+      </xsd:sequence>
+      <xsd:attribute name="Success" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Products">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="Product"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Traveler">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="Products"/>
+      </xsd:sequence>
+      <xsd:attribute name="TYPE" type="xsd:string"/>
+      <xsd:attribute name="RPH" type="xsd:string"/>
+      <xsd:attribute name="Name" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Travelers">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" ref="Traveler"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Product">
+    <xsd:complexType>
+      <xsd:attribute name="FlightRPH" type="xsd:string"/>
+      <xsd:attribute name="ProductCode" type="xsd:string"/>
+      <xsd:attribute name="ProductSubCode" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

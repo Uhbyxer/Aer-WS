@@ -6,7 +6,8 @@ CREATE COMPUTE MODULE ErrorHandler
 		DECLARE Path REFERENCE TO InputExceptionList.*[1];
 		CREATE FIELD OutputRoot.XMLNSC.TestAppRS;
       	DECLARE errorMessage REFERENCE TO OutputRoot.XMLNSC.TestAppRS;
-      	SET errorMessage.RequestPayload   =  InputRoot.XMLNSC ;
+      	
+      	--SET errorMessage.RequestPayload   =  InputRoot.XMLNSC ;
       	
      	WHILE Path.Number IS NOT NULL DO
 	      SET errorMessage.ERROR.ErrorCode		=  CAST(Path.Number AS CHARACTER);

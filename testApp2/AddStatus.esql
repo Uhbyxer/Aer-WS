@@ -1,0 +1,12 @@
+
+
+CREATE COMPUTE MODULE AddStatus
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET OutputRoot = InputRoot;
+		SET OutputRoot.XMLNSC.TestAppRS.(XMLNSC.Attribute)Success = TRUE;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
