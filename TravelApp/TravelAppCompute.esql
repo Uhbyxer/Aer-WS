@@ -1,0 +1,96 @@
+
+
+CREATE COMPUTE MODULE TravelAppCompute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE dataRef REFERENCE TO OutputRoot.JSON.Data;
+		
+		DECLARE travelerInfoRef REFERENCE TO InputRoot.JSON.Data.AirReservation.TravelerInfo;
+		
+		DECLARE offerRef REFERENCE TO InputRoot.JSON.Data.AirReservation.Offer;
+		
+		DECLARE S CHAR;
+		DECLARE travelers ROW;
+		DECLARE products ROW;
+		
+		DECLARE I INT 1;
+		
+		SET travelers.traveler[] = 	SELECT  airTraveler as traveler, 
+											airTraveler.PassengerTypeCode as type, 
+											airTraveler.PersonName.GivenName as name, 
+											airTraveler.TravelerRefNumber.RPH as rph
+									FROM	travelerInfoRef.AirTraveler.Item[] AS airTraveler;		
+		
+		FOR t AS travelers.traveler[] DO
+			
+			SET dataRef.travelers[I].rph = t.rph;
+			SET dataRef.travelers[I].name = t.name;
+			SET dataRef.travelers[I].type = t.type;
+			
+			
+			DECLARE J INT 1;
+			
+					SET products.product[] = 	SELECT  priced.ServiceFamily.ServiceCode as  ServiceCode,
+														priced.TravelerRPH as rph
+												FROM	offerRef.Priced.Item[] AS priced
+												WHERE   priced.TravelerRPH = t.rph;	
+
+			FOR p AS products.product[] DO
+				
+				DECLARE  ServiceCode CHAR;
+				SET ServiceCode = p.ServiceCode; 
+				
+				
+				SET dataRef.travelers[I].products[J].ServiceCode = p.ServiceCode;
+				SET dataRef.travelers[I].products[J].rph = p.rph;
+					
+				
+				SET J = J + 1;
+			END FOR;	
+			
+			
+			
+			
+			
+			SET I = I + 1;
+		END FOR;	
+		
+		
+		
+		RETURN TRUE;
+		
+		
+		
+
+
+
+
+
+--		DECLARE travelers ROW;
+--				
+--		SET travelers.traveler[] = 	SELECT  airTraveler as travel
+--									FROM	InputRoot.JSON.Data.AirTraveler.Item[] AS airTraveler
+--									;
+--		CREATE FIELD OutputRoot.JSON.Data;
+--		DECLARE dataRef REFERENCE TO OutputRoot.JSON.Data;
+		
+		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

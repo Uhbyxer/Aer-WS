@@ -1,0 +1,221 @@
+/*
+Sample program for use with IBM Integration Bus
+© Copyright International Business Machines Corporation 2010
+Licensed Materials - Property of IBM
+*/
+
+CREATE COMPUTE MODULE Compute_Create
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copy Message Properties only
+		SET OutputRoot.Properties = InputRoot.Properties;
+		-- Using the JSON input build the XML Create document to send to the MQ APP
+		
+		-- Test if the JSON data is an array of obejcts to be created
+		IF BITAND(FIELDTYPE(InputRoot.JSON.Data),JSON.Array) = JSON.Array THEN
+			-- Input JSON data is an array of CD objects to be created
+			--  [{"Title":"..",,,"Members":["..",,]},{..},,]
+			-- Which produces the JSON Domain tree as
+			-- JSON Array
+			--     Item
+			--         Title ..    
+			--         ,,
+			--         Members <-Array
+			--            Item ..
+			--     Item
+			-- The JSON Data needs to be converted to XML for the XmlMqApp message flow
+			-- in this sample the structure is a very direct mapping, we just need
+			-- to insert the XML document elemnt and rename the JSON array "Item" elements
+			-- XMLNSC
+			--     Create
+			--         CD
+			--             Title ..    
+			--             ,,
+			--             Members
+			--                Member ..
+			--         CD
+			-- 1) Copy the JSON data into the XML Create document
+			SET OutputRoot.XMLNSC.Create = InputRoot.JSON.Data;
+			-- 2) For each JSON data outer array Item, rename the element to "CD" for the XML 
+			DECLARE cdRef REFERENCE TO OutputRoot.XMLNSC.Create.Item[>];
+			WHILE LASTMOVE(cdRef) DO
+				SET cdRef NAME = 'CD';
+				-- 3) For each JSON data Members array Item, rename the element to "Member" for the XML
+				DECLARE memberRef REFERENCE TO cdRef.Members.Item[>];
+				WHILE LASTMOVE(memberRef) DO
+					SET memberRef NAME = 'Member';
+					MOVE memberRef NEXTSIBLING NAME 'Item';
+				END WHILE;
+				MOVE cdRef NEXTSIBLING NAME 'Item';
+			END WHILE;
+		ELSE 
+			-- Input JSON data is a single object to be created
+			--  {"Title":"..",,,"Members":["..",,]}
+			-- Which produces the JSON Domain tree as
+			-- JSON
+			--     Title ..    
+			--     ,,
+			--     Members <-Array
+			--            Item ..
+			-- The JSON Data needs to be converted to XML for the XmlMqApp message flow
+			-- in this sample the structure is a very direct mapping, we just need
+			-- to insert the XML document elemnt and rename the JSON Members array "Item" elements
+			-- XMLNSC
+			--     Create
+			--         CD
+			--             Title ..    
+			--             ,,
+			--             Members <-Array
+			--                Member ..
+			-- 1) Copy the JSON data object into the XML Create document CD sub tree
+			SET OutputRoot.XMLNSC.Create.CD = InputRoot.JSON.Data;
+			-- 2) For each JSON data Members array Item, rename the element to "Member" for the XML
+			DECLARE memberRef REFERENCE TO OutputRoot.XMLNSC.Create.CD.Members.Item[>];
+			WHILE LASTMOVE(memberRef) DO
+				SET memberRef NAME = 'Member';
+				MOVE memberRef NEXTSIBLING NAME 'Item';
+			END WHILE;
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE Compute_Retrieve
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copy Message Properties only
+		SET OutputRoot.Properties = InputRoot.Properties;
+	
+		SET OutputRoot.XMLNSC.Retrieve.CD.Title = Environment.SaveState.target;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE Compute_StateMsg
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN	
+		-- Copy Message Properties only
+		SET OutputRoot.Properties = InputRoot.Properties;
+		-- Put required status into store queue message body
+		SET OutputRoot.JSON.Data.SaveState =  Environment.SaveState;
+
+		-- Note following MQ Header node will create an MQMD and set CorrelId 
+		-- be to the value of the MsgId sent to the MqXmlApp.msgflow Application
+		-- This CorrelId is used by the MQGet node used restore saved HTTP Req Id
+		-- when the MqXmlApp async MQ reply arrives
+
+		RETURN TRUE;
+	END;
+	
+END MODULE;
+
+
+CREATE COMPUTE MODULE ComputeJsonReply
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN	
+		-- Copy Message Properties only
+		SET OutputRoot.Properties = InputRoot.Properties;
+		
+		-- Restore the HTTP Reply Identifier from the data retreived from
+		-- the Store queue by the MQ Get node
+		SET OutputLocalEnvironment.Destination.HTTP.RequestIdentifier = 
+		      CAST(InputLocalEnvironment.JSON.Data.SaveState.requestIdentifier AS BLOB);
+		      
+		
+		-- Build the JSON client application reply message from the MqXmlApp.msgflow XML response
+		-- In our sample the JSON data structure is a very direct mapping of the XML
+		-- document structure, in which repeating elements become JSON arrays
+		-- To have the JSON data serialize into Array we need to set the JSON.Array Domain
+		-- type on the relevant parent elements
+		--
+		-- Note: When teh JSON parser builds a tree the anonymous items in JSON arrays
+		--       are named Item in the tree. The JSON serializer does not use the element
+		--       name, since the array items are anonymous, so the name can be anything.
+		
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER CARDINALITY(InputRoot.XMLNSC.Response.CD[]);
+
+		IF J > 1 THEN
+			-- We have more than one CD element to return, format as a JSON array
+			SET OutputRoot.JSON.Data = InputRoot.XMLNSC.Response;
+			SET OutputRoot.JSON.Data TYPE = JSON.Array;
+			WHILE I <= J DO
+				-- Format the Member elements from Response.CD.Members as a JSON array
+				SET OutputRoot.JSON.Data.*[I].Members TYPE = JSON.Array;
+				SET I = I+1;
+			END WHILE;
+		ELSE
+			DECLARE cdRef REFERENCE TO InputRoot.XMLNSC.Response.CD;
+			IF LASTMOVE(cdRef) THEN
+				-- We have a single CD element to return, format as a JSON object
+				SET OutputRoot.JSON.Data = cdRef;
+				-- Format the Member elements from Response.CD.Members as a JSON array
+				SET OutputRoot.JSON.Data.Members TYPE = JSON.Array;
+			ELSE
+				-- Empty response, possible result
+				SET OutputRoot.JSON.Data.Status = InputRoot.XMLNSC.Response.Result;
+				
+			END IF;
+		END IF;
+		
+		--Add padding to the tree, if it exists
+		DECLARE paddingRef REFERENCE TO InputLocalEnvironment.JSON.Data.SaveState.padding;
+		IF LASTMOVE(paddingRef) THEN
+			CREATE FIRSTCHILD OF OutputRoot.JSON TYPE NameValue NAME 'Padding' VALUE paddingRef;			
+		END IF;
+
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE ComputeState
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		-- Save State the HTTP RequestIdentifier is needed for the async 
+		-- reply path's HTTP Reply node
+		SET Environment.SaveState.requestIdentifier = InputLocalEnvironment.Destination.HTTP.RequestIdentifier;
+		-- For completeness also save method. (Not currently used)
+		SET Environment.SaveState.method = InputLocalEnvironment.HTTP.Input.RequestLine.Method;
+		
+		-- For REST the last section of the Request URI should name the target object this
+		-- action is to be performed on
+		DECLARE targObj CHARACTER;
+		SET targObj = SUBSTRING(InputLocalEnvironment.HTTP.Input.RequestLine.RequestURI After '/');
+		SET targObj = SUBSTRING(targObj After '/');
+
+		DECLARE padding CHARACTER;
+		SET Environment.SaveState.padding = InputLocalEnvironment.HTTP.Input.QueryString.[>];
+
+		-- Sanitize the title in the URL.
+		SET targObj = REPLACE(targObj,'%20',' ');
+		
+		IF targObj = '' OR targObj = NULL THEN
+			SET targObj = '*';
+		END IF;
+		
+		-- For completeness also save target. (Not currently used)
+		SET Environment.SaveState.target = targObj;
+		RETURN TRUE;
+	END;
+
+
+END MODULE;
+
+
+
+CREATE COMPUTE MODULE Compute_Add_Padding
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+
+		
+		RETURN TRUE;
+	END;
+END MODULE;

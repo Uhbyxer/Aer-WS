@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.etools.mft.unittest.core.models.client="http:///com/ibm/etools/mft/unittest/core/models/client.ecore" xmlns:com.ibm.wbit.comptest.common.models.event="http:///com/ibm/etools/mft/unittest/common/models/event.ecore" xmlns:jms="http:///com/ibm//etools/mft/unittest/common/model2/jms" xmlns:model2="http:///com/ibm//etools/mft/unittest/common/model2" xmlns:mq="http:///com/ibm//etools/mft/unittest/common/model2/mq">
+  <com.ibm.etools.mft.unittest.core.models.client:EclipseClient iD="1283809361535-3904" eventTrace="/1" clientID="1283809361535-3904">
+    <scopes xsi:type="model2:FlowTestScope" name="Configuration" iD="default">
+      <testModules xsi:type="model2:TestMsgFlow" name="/JSONRESTSampleFlowProject/HttpJsonRestProvider.msgflow" iD="1283809361535-3908"/>
+      <testModules xsi:type="model2:TestMsgFlow" name="/JSONRESTSampleFlowProject/MqXmlApp.msgflow" iD="1283809389144-3911"/>
+      <settings xsi:type="model2:FlowSettings"/>
+      <settings xsi:type="model2:DeploymentSettings" useSameLocation="false" runtimeEnvType="Integration Bus v9.0" runtimeInstance="localhost^IB9NODE^JSONRESTSampleExecutionGroup^0" deployOption="DEPLOY_NEVER" overrideConfigurableProperty="false" barFile="/JSONRESTSampleFlowProject/JSONRESTSample.bar"/>
+      <settings xsi:type="mq:MQSettings"/>
+      <settings xsi:type="jms:JMSSettings"/>
+      <settings xsi:type="mq:MQMessageHeaders"/>
+      <settings xsi:type="jms:JMSMessageHeaders"/>
+      <messageHeaders xsi:type="mq:MQHeader" iD="1283809361535-3907" headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </messageHeaders>
+      <messageHeaders xsi:type="jms:JMSHeader" headerName="Default Header"/>
+    </scopes>
+  </com.ibm.etools.mft.unittest.core.models.client:EclipseClient>
+  <com.ibm.wbit.comptest.common.models.event:ExecutionEventTrace iD="1283809361535-3905" children="/2 /3"/>
+  <model2:InteractiveInputNodeInvocationEvent iD="1283809361535-3909" timestamp="1283809361535" msgFlow="/JSONRESTSampleFlowProject/HttpJsonRestProvider.msgflow" nodeId="FCMComposite_1_1" testScopeID="default" nodeName="HTTP JSON Input" nodeType="ComIbmWSInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283809361769-3910">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%7B%0D%0A+%22Title%22+%3A+%22Sharks+Ride+On+A+Spoon%22%2C%0D%0A++%22Artist%22+%3A+%22Fuchsia+Floyd%22%2C%0D%0A++%22Country%22+%3A+%22UK%22%2C%0D%0A++%22Price%22+%3A+12.99%2C%0D%0A++%22Year%22++%3A+1973%2C%0D%0A++%22Members%22%3A%5B%22Bob+Gilmour%22%2C%22John+Mason%22%2C%22Buck+Waters%22%2C%22Steve+Wright%22%2C%22Mark+Barrett%22%5D%0D%0A%7D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <model2:InteractiveInputNodeInvocationEvent iD="1283809730347-3924" timestamp="1283809730347" msgFlow="/JSONRESTSampleFlowProject/HttpJsonRestProvider.msgflow" nodeId="FCMComposite_1_1" testScopeID="default" nodeName="HTTP JSON Input" nodeType="ComIbmWSInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283809361769-3910">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%5B%7B%0D%0A+%22Title%22+%3A+%22Sharks+Ride+On+A+Spoon%22%2C%0D%0A++%22Artist%22+%3A+%22Fuchsia+Floyd%22%2C%0D%0A++%22Country%22+%3A+%22UK%22%2C%0D%0A++%22Price%22+%3A+12.99%2C%0D%0A++%22Year%22++%3A+1973%2C%0D%0A++%22Members%22%3A%5B%22Bob+Gilmour%22%2C%22John+Mason%22%2C%22Buck+Waters%22%2C%22Steve+Wright%22%2C%22Mark+Barrett%22%5D%0D%0A%7D%2C%0D%0A%7B%0D%0A+%22Title%22+%3A+%22Wish+You+Were+Here%22%2C%0D%0A++%22Artist%22+%3A+%22Pink+Floyd%22%2C%0D%0A++%22Country%22+%3A+%22UK%22%2C%0D%0A++%22Price%22+%3A+12.99%2C%0D%0A++%22Year%22++%3A+1975%2C%0D%0A++%22Members%22%3A%5B%22David+Gilmour%22%2C%22Nick+Mason%22%2C%22Roger+Waters%22%2C%22Richard+Wright%22%2C%22Syd+Barrett%22%5D%0D%0A%7D%5D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+</xmi:XMI>

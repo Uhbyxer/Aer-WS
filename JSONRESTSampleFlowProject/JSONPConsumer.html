@@ -1,0 +1,67 @@
+<html>
+<head>
+	<script type="text/javascript" language="javascript">
+
+                                   
+		function parseResponse(data) {
+			if (typeof data == "object") {
+				document.write("<div class='cd'>")
+               
+				for (var key in data) {
+					var message = ''
+					if (typeof data[key] == "object"){
+						if (key == "Members"){
+							document.write("<div class='members'>")
+						}
+						else { 
+							document.write("</div></div>")
+						}
+					}
+					else{
+						message = message + "<span class='key'>" + key + ": </span>" + data[key] + "<br/>"
+						document.write(message);
+					}
+						parseResponse(data[key])
+				}
+				document.write("</div></div>")
+			} 
+		}      
+          
+	</script>
+     
+	<script type="text/javascript" src="http://localhost:7080/jsonrequest/*?jsonp=parseResponse"></script>
+
+	<style type="text/css">
+		* {
+			font-family:calibri;
+		}
+          
+		.cd {
+			border: solid 1px black;
+			margin:5px;
+			padding:5px;
+			min-width:200px;
+			float:left;
+			background-color:#528B8B;
+		}
+          
+		.cd .key {
+			font-weight:bold;
+		}
+          
+		.members *  {
+			text-align:right;
+			background-color:#f2e02a;
+		}
+                       
+		.members div .key {
+			visibility:hidden;
+		}
+          
+	</style>
+ 
+</head>
+<body>
+	<div id="data"></div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+
+
+Importing file: C:\Program Files (x86)\IBM\IntegrationToolkit90\configuration\org.eclipse.osgi\bundles\803\1\.cp\ibm\soap\soap.xsd
+
+
+Elapsed time processing this message definition file: 1.509 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+
+
+Elapsed time processing this message definition file: 15.137 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

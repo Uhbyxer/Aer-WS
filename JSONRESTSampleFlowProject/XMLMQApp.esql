@@ -1,0 +1,157 @@
+/*
+Sample program for use with IBM Integration Bus
+© Copyright International Business Machines Corporation 2010
+Licensed Materials - Property of IBM
+*/
+
+
+DECLARE Data SHARED ROW;
+DECLARE Init SHARED BOOLEAN FALSE;
+
+CREATE COMPUTE MODULE APP_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		--Set CD data in the shared variable
+		CALL SetData();
+		
+		-- Set MQ Correlation ID in the Reply to server as sent Message ID
+		SET OutputRoot.MQMD.CorrelId = InputRoot.MQMD.MsgId;
+
+
+		-- Get the XML document name that determines the action the application
+		-- will perform, one of Create, Retrieve, Update, Delete				
+		DECLARE method CHAR FIELDNAME(InputRoot.XMLNSC.[1]);
+		
+		-- Perform processing based on Input XML document which is one of
+		CASE method
+			WHEN 'Create' THEN
+				--  Create .. add an entry 
+
+				DECLARE cdCount INTEGER;
+				DECLARE I INTEGER 1;
+				DECLARE J INTEGER CARDINALITY(InputRoot.XMLNSC.Create.CD[]);
+				WHILE I <= J DO
+					SET cdCount = CARDINALITY(Data.CD[]);
+
+					SET Data.CD[cdCount+1] = InputRoot.XMLNSC.Create.CD[I];
+					SET I=I+1;
+				END WHILE;
+				SET OutputRoot.XMLNSC.Response.CD[] = SELECT * FROM Data.CD[];
+			WHEN 'Retrieve' THEN
+				--  Retrieve  a selected entry or '*' for all
+				IF InputRoot.XMLNSC.Retrieve.[1].[1] = '*' THEN
+					SET OutputRoot.XMLNSC.Response.CD[] = SELECT * FROM Data.CD[];
+				ELSE
+					SET OutputRoot.XMLNSC.Response.CD[] = SELECT * FROM Data.CD[] AS D 
+					     WHERE D.{FIELDNAME(InputRoot.XMLNSC.Retrieve.[1].[1])} = 
+					       InputRoot.XMLNSC.Retrieve.[1].[1];
+					DECLARE cdRef REFERENCE TO OutputRoot.XMLNSC.Response.CD;
+					IF LASTMOVE(cdRef) THEN
+						-- OK
+					ELSE 
+						SET OutputRoot.XMLNSC.Response.Result = 'Not Found';
+					END IF;
+				END IF;
+			WHEN 'Update' THEN
+				-- Update the data in an existing entry
+				SET OutputRoot.XMLNSC.Response.Result = 'Not Found';
+				DECLARE i INTEGER 1;
+				DECLARE j INTEGER CARDINALITY(Data.CD[]);
+				WHILE i <= j DO
+					IF Data.CD[i].Title = InputRoot.XMLNSC.Update.CD.Title THEN
+						-- Found the entry with this title update data
+						-- Note: The sample application makes no attempt to 
+						--       prevent overlapping updates as would be done
+						--       in a real REST application
+						-- Update the data
+						SET Data.CD[i] = InputRoot.XMLNSC.Update.CD;
+						-- Respond with the updated data
+						SET OutputRoot.XMLNSC.Response.CD[<] = Data.CD[i];
+						-- Clear assumed "Not Found" response
+						SET OutputRoot.XMLNSC.Response.Result = NULL;
+						SET i = j;
+					END IF;	
+					SET i = i + 1;		
+				END WHILE;
+			WHEN 'Delete' THEN
+				-- Delete an existing entry if found
+				SET OutputRoot.XMLNSC.Response.Result = 'Not Found';
+				DECLARE i INTEGER 1;
+				DECLARE j INTEGER CARDINALITY(Data.CD[]);
+				WHILE i <= j DO
+					IF Data.CD[i].Title = InputRoot.XMLNSC.Delete.CD.Title THEN
+						-- Found remove entry
+						SET Data.CD[i] = NULL;
+						SET OutputRoot.XMLNSC.Response.Result = 'Success';
+						SET i = j;
+					END IF;	
+					SET i = i + 1;		
+				END WHILE;
+		END CASE;
+			
+		RETURN TRUE;
+	END;
+
+CREATE PROCEDURE SetData()
+BEGIN
+	IF Init = FALSE THEN
+		SET Data.CD[1].Title = 'Friars Ball';
+		SET Data.CD[1].Artist = 'Deep Blue';
+		SET Data.CD[1].Country = 'UK';
+		SET Data.CD[1].Price = 9.90;
+		SET Data.CD[1].Year = 1971;
+		SET Data.CD[1].Members.Member[1] = 'Liam Gillan';
+		SET Data.CD[1].Members.Member[2] = 'Alan Blackmore';
+		SET Data.CD[1].Members.Member[3] = 'Phil Glover';
+		SET Data.CD[1].Members.Member[4] = 'David Paice';
+		SET Data.CD[1].Members.Member[5] = 'Tom Lord';
+		
+		SET Data.CD[2].Title = 'The Floors';
+		SET Data.CD[2].Artist = 'The Floors';
+		SET Data.CD[2].Country = 'USA';
+		SET Data.CD[2].Price = 9.90;
+		SET Data.CD[2].Year = 1967;
+		SET Data.CD[2].Members.Member[1] = 'Tim Morrison';
+		SET Data.CD[2].Members.Member[2] = 'Micky Manzarek';
+		SET Data.CD[2].Members.Member[3] = 'Jay Manzarek';
+		SET Data.CD[2].Members.Member[4] = 'Matt Sullivan';
+		SET Data.CD[2].Members.Member[5] = 'Ron Densmore';
+		SET Data.CD[2].Members.Member[6] = 'Ben Manzarek';
+		
+		SET Data.CD[3].Title = 'IX';
+		SET Data.CD[3].Artist = 'Lead Balloon';
+		SET Data.CD[3].Country = 'UK';
+		SET Data.CD[3].Price = 10.20;
+		SET Data.CD[3].Year = 1971;
+		SET Data.CD[3].Members.Member[1] = 'Timmy Page';
+		SET Data.CD[3].Members.Member[2] = 'Mike Paul Jones';
+		SET Data.CD[3].Members.Member[3] = 'Chris Plant';
+		SET Data.CD[3].Members.Member[4] = 'Dom Bonham';
+		
+		SET Data.CD[4].Title = 'Motel Nevada';
+		SET Data.CD[4].Artist = 'The Seagulls';
+		SET Data.CD[4].Country = 'USA';
+		SET Data.CD[4].Price = 9.90;
+		SET Data.CD[4].Year = 1976;
+		SET Data.CD[4].Members.Member[1] = 'Glenn Frey';
+		SET Data.CD[4].Members.Member[2] = 'Don Henley';
+		SET Data.CD[4].Members.Member[3] = 'Joe Walsh';
+		SET Data.CD[4].Members.Member[4] = 'Don Felder';
+			
+		SET Data.CD[5].Title = 'Alright PC';
+		SET Data.CD[5].Artist = 'Stereoface';
+		SET Data.CD[5].Country = 'UK';
+		SET Data.CD[5].Price = 10.90;
+		SET Data.CD[5].Year = 1997;
+		SET Data.CD[5].Members.Member[1] = 'Ashley Yorke';
+		SET Data.CD[5].Members.Member[2] = 'Simon Greenwood';
+		SET Data.CD[5].Members.Member[3] = 'Ned O''Brien';
+		SET Data.CD[5].Members.Member[4] = 'Robin Greenwood';
+		SET Data.CD[5].Members.Member[5] = 'Andy Selway';
+
+		SET Init = TRUE;
+	END IF;
+	
+END;
+
+END MODULE;

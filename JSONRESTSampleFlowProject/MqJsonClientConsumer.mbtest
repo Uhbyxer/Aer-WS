@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.etools.mft.unittest.core.models.client="http:///com/ibm/etools/mft/unittest/core/models/client.ecore" xmlns:com.ibm.wbit.comptest.common.models.event="http:///com/ibm/etools/mft/unittest/common/models/event.ecore" xmlns:http="http:///com/ibm//etools/mft/unittest/common/model2/http" xmlns:jms="http:///com/ibm//etools/mft/unittest/common/model2/jms" xmlns:model2="http:///com/ibm//etools/mft/unittest/common/model2" xmlns:mq="http:///com/ibm//etools/mft/unittest/common/model2/mq">
+  <com.ibm.etools.mft.unittest.core.models.client:EclipseClient iD="1283809969597-4806" eventTrace="/1" clientID="1283809969597-4806">
+    <scopes xsi:type="model2:FlowTestScope" name="Configuration" iD="default">
+      <testModules xsi:type="model2:TestMsgFlow" name="/JSONRESTSampleFlowProject/MqJsonClientConsumer.msgflow" iD="1283809969597-4810">
+        <monitors xsi:type="mq:MQMonitor" name="JSON_REPLY1" iD="1285854487312-42" host="localhost" port="0" queueManager="IB9QMGR" queue="JSON_REPLY1"/>
+        <inputNodes xsi:type="mq:MQInputNode" nodeName="MQ Input (RETRIEVE_IN1)" queue="RETRIEVE_IN1"/>
+        <inputNodes xsi:type="mq:MQInputNode" nodeName="MQ Input (DELETE_IN1)" queue="DELETE_IN1"/>
+        <inputNodes xsi:type="mq:MQInputNode" nodeName="MQ Input (CREATE_IN1)" queue="CREATE_IN1"/>
+        <inputNodes xsi:type="mq:MQInputNode" nodeName="MQ Input (UPDATE_IN1)" queue="UPDATE_IN1"/>
+      </testModules>
+      <testModules xsi:type="model2:TestMsgFlow" name="/JSONRESTSampleFlowProject/HttpJsonRestProvider.msgflow" iD="1283809982300-4813">
+        <monitors xsi:type="mq:MQMonitor" name="JSONSVC_STATE1" iD="1285854487312-43" host="localhost" port="0" queueManager="IB9QMGR" queue="JSONSVC_STATE1"/>
+        <inputNodes xsi:type="http:HTTPInputNode" nodeName="HTTP JSON Input" urlSpecifier="/jsonrequest*"/>
+        <inputNodes xsi:type="mq:MQInputNode" nodeName="MQInput (APP_OUT1)" queue="APP_OUT1"/>
+      </testModules>
+      <testModules xsi:type="model2:TestMsgFlow" name="/JSONRESTSampleFlowProject/MqXmlApp.msgflow" iD="1283809989706-4814">
+        <inputNodes xsi:type="mq:MQInputNode" nodeName="MQ XML Input (APP_IN1)" queue="APP_IN1"/>
+      </testModules>
+      <testModules xsi:type="model2:TestMsgFlow" name="/JSONRESTSampleFlowProject/MqXmlClientConsumer.msgflow" iD="1284560217968-145">
+        <monitors xsi:type="mq:MQMonitor" name="XML_CONS_REPLY1" iD="1285854487328-46" host="localhost" port="0" queueManager="IB9QMGR" queue="XML_CONS_REPLY1"/>
+        <inputNodes xsi:type="mq:MQInputNode" nodeName="MQ Input (XML_CONS_IN1)" queue="XML_CONS_IN1"/>
+      </testModules>
+      <settings xsi:type="model2:FlowSettings"/>
+      <settings xsi:type="model2:DeploymentSettings" useSameLocation="false" runtimeEnvType="Integration Bus v9.0" runtimeInstance="localhost^IB9NODE^JSONRESTSampleExecutionGroup^0" deployOption="DEPLOY_NEVER" overrideConfigurableProperty="false" barFile="/JSONRESTSampleFlowProject/JSONRESTSample.bar"/>
+      <settings xsi:type="mq:MQSettings"/>
+      <settings xsi:type="jms:JMSSettings"/>
+      <settings xsi:type="mq:MQMessageHeaders"/>
+      <settings xsi:type="jms:JMSMessageHeaders"/>
+      <messageHeaders xsi:type="mq:MQHeader" iD="1283809969597-4809" headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </messageHeaders>
+      <messageHeaders xsi:type="jms:JMSHeader" headerName="Default Header"/>
+    </scopes>
+  </com.ibm.etools.mft.unittest.core.models.client:EclipseClient>
+  <com.ibm.wbit.comptest.common.models.event:ExecutionEventTrace iD="1283809969597-4807" children="/2 /3 /4 /5 /6 /7 /8"/>
+  <model2:InteractiveInputNodeInvocationEvent iD="1285855343453-41" timestamp="1285855343453" msgFlow="/JSONRESTSampleFlowProject/MqJsonClientConsumer.msgflow" nodeId="FCMComposite_1_7" testScopeID="default" nodeName="MQ Input (RETRIEVE_IN1)" nodeType="ComIbmMQInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283810317222-4833" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%7B%0D%0A+%22Title%22+%3A+%22Friars+Ball%22%0D%0A%7D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1283809969597-4809" headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <model2:InteractiveInputNodeInvocationEvent iD="1285855352109-44" timestamp="1285855352109" msgFlow="/JSONRESTSampleFlowProject/MqJsonClientConsumer.msgflow" nodeId="FCMComposite_1_8" testScopeID="default" nodeName="MQ Input (UPDATE_IN1)" nodeType="ComIbmMQInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283810111175-4817" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%7B%0D%0A+%22Title%22+%3A+%22Friars+Ball%22%2C%0D%0A++%22Artist%22+%3A+%22Deep+Orange%22%2C%0D%0A++%22Country%22+%3A+%22United+Kingdom%22%2C%0D%0A++%22Price%22+%3A+19.90%2C%0D%0A++%22Year%22++%3A+2010%2C%0D%0A++%22Members%22%3A%5B%22Liam+Gillan%22%2C%22Alan+Blackmore%22%2C%22Phil+Glover%22%2C%22David+Paice%22%2C%22Tom+Lord%22%5D%0D%0A%7D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <model2:InteractiveInputNodeInvocationEvent iD="1285855354093-46" timestamp="1285855354093" msgFlow="/JSONRESTSampleFlowProject/MqJsonClientConsumer.msgflow" nodeId="FCMComposite_1_7" testScopeID="default" nodeName="MQ Input (RETRIEVE_IN1)" nodeType="ComIbmMQInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283810325675-4834" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%7B%0D%0A+%22Title%22+%3A+%22Friars+Ball%22%0D%0A%7D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <model2:InteractiveInputNodeInvocationEvent iD="1285855356250-48" timestamp="1285855356250" msgFlow="/JSONRESTSampleFlowProject/MqJsonClientConsumer.msgflow" nodeId="FCMComposite_1_7" testScopeID="default" nodeName="MQ Input (RETRIEVE_IN1)" nodeType="ComIbmMQInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283810330050-4835" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%7B%0D%0A+%22Title%22+%3A+%22*%22%0D%0A%7D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <model2:InteractiveInputNodeInvocationEvent iD="1285855358250-50" timestamp="1285855358250" msgFlow="/JSONRESTSampleFlowProject/MqJsonClientConsumer.msgflow" nodeId="FCMComposite_1_9" testScopeID="default" nodeName="MQ Input (DELETE_IN1)" nodeType="ComIbmMQInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283810403956-4838" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%7B%0D%0A+%22Title%22+%3A+%22Friars+Ball%22%0D%0A%7D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1283809969597-4809" headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <model2:InteractiveInputNodeInvocationEvent iD="1285855361156-53" timestamp="1285855361156" msgFlow="/JSONRESTSampleFlowProject/MqJsonClientConsumer.msgflow" nodeId="FCMComposite_1_6" testScopeID="default" nodeName="MQ Input (CREATE_IN1)" nodeType="ComIbmMQInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283810681378-4961" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%7B%0D%0A+%22Title%22+%3A+%22Sharks+Ride+On+A+Spoon%22%2C%0D%0A++%22Artist%22+%3A+%22Fuchsia+Floyd%22%2C%0D%0A++%22Country%22+%3A+%22UK%22%2C%0D%0A++%22Price%22+%3A+12.99%2C%0D%0A++%22Year%22++%3A+1973%2C%0D%0A++%22Members%22%3A%5B%22Bob+Gilmour%22%2C%22John+Mason%22%2C%22Buck+Waters%22%2C%22Steve+Wright%22%2C%22Mark+Barrett%22%5D%0D%0A%7D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <model2:InteractiveInputNodeInvocationEvent iD="1285855363953-55" timestamp="1285855363953" msgFlow="/JSONRESTSampleFlowProject/MqJsonClientConsumer.msgflow" nodeId="FCMComposite_1_7" testScopeID="default" nodeName="MQ Input (RETRIEVE_IN1)" nodeType="ComIbmMQInput.msgnode">
+    <request xsi:type="model2:TestMessage" iD="1283810330050-4835" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%7B%0D%0A+%22Title%22+%3A+%22*%22%0D%0A%7D"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+</xmi:XMI>

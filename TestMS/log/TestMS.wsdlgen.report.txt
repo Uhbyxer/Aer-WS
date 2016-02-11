@@ -1,0 +1,62 @@
+Summary of selections: WSDL files generation
+
+The selected message set:
+/TestMS/TestMS
+
+The generated WSDL files will go into:
+/TestMS/TestMS
+
+The version of WSDL to be generated: 1.1
+The version of SOAP to be generated: 1.1
+
+The selected style for WSDL generation: document
+The WSDL Namespace: http://www.mrmnames.net
+
+The following operations will be created:
+getTarget (Request-Response)
+
+The following bindings are selected:
+SOAP over http.
+
+The following WSDL files will be generated:
+/TestMS/TestMS/TestMSService.wsdl
+
+
+Generating XML Schema files from Message Definition files
+Generating schema for no XML Wire format
+Generating schema using the strict option
+All complex types and groups with a Content validation of "Open" or "Open defined" will be generated as if they had Content validation "Closed"
+All complex types and groups with a Composition of "Ordered set" or "Unordered set" will be generated with a Composition of "Sequence"
+All complex types and groups with a Composition of "Message" will be generated with a Composition of "Choice"
+
+
+Processing File : "/TestMS/TestMS/net/mrmnames/www/TestMD.mxsd"
+
+Saving File : "/TestMS/TestMS/net/mrmnames/www/net/mrmnames/www/TestMD.xsd" 
+
+Generating XML Schema file \TestMS\TestMS\net\mrmnames\www\TestMD.mxsd from Message Definition file \TestMS\TestMS\net\mrmnames\www\net\mrmnames\www\TestMD.xsd
+Creating new WSDL Service file '\TestMS\TestMS\net\mrmnames\www\TestMSService.wsdl'
+Setting wsdl definition name for 'TestMSService.wsdl': TestMS
+Setting wsdl definition targetNamespace for 'TestMSService.wsdl': http://www.mrmnames.net
+Adding namespace: xmlns for 'TestMSService.wsdl':tns=http://www.mrmnames.net
+Adding namespace: xmlns for 'TestMSService.wsdl':soap=http://schemas.xmlsoap.org/wsdl/soap/
+Adding namespace: xmlns for 'TestMSService.wsdl':xsd=http://www.w3.org/2001/XMLSchema
+Adding namespace: xmlns for 'TestMSService.wsdl':wsdl=http://schemas.xmlsoap.org/wsdl/
+Creating new WSDL Interface file '\TestMS\TestMS\net\mrmnames\www\TestMSService.wsdl'
+Creating portType for WSDL Interface: TestMSPortType
+Creating portType operation 'getTarget'
+Creating message 'getTarget_in'
+Creating message 'getTarget_out'
+Creating message 'getTarget_fault1'
+Creating SOAP over HTTP binding 'TestMSSOAP_HTTP_Binding'
+Creating binding operation 'getTarget' for binding 'TestMSSOAP_HTTP_Binding'
+Creating SOAP over HTTP service 'Test_Service'
+Creating port 'Test_Port' for service 'Test_Service'
+
+Elapsed time processing this WSDL definition: 0.783 seconds
+Number of warnings for this WSDL definition: 0
+
+
+Number of files processed: 2
+
+

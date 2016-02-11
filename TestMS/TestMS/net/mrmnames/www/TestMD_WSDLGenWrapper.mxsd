@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><schema targetNamespace="http://www.mrmnames.net" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.mrmnames.net">
+  <include schemaLocation="TestMD.mxsd"/>
+</schema>

@@ -1,0 +1,8 @@
+{
+    "name" : "John Doe",
+    "age" : -1,
+    "known" : false,
+    "address" : { "street" : null,
+                  "city" : "unknown" },
+    "belongings" : ["this", "that", "the other"]
+}

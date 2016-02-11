@@ -1,0 +1,1020 @@
+{
+   "EchoToken": "0022CAB34420141126",
+   "PrimaryLangID": "EN",
+   "TimeStamp": "2015-01-05T10:16:50.366Z",
+   "Version": "1.0",
+   "Success": null,
+   "AirReservation": {
+      "LastModified": "2015-01-05T10:16:50.366Z",
+      "CreateDateTime": "2014-11-26T14:41:00Z",
+      "AirItinerary": {
+         "OriginDestinationOptions": {
+            "OriginDestinationOption": [
+               {
+                  "RPH": "1",
+                  "FlightSegment": [
+                     {
+                        "ArrivalDateTime": "2050-01-10T13:30:00+00:00",
+                        "ConnectionType": "DEST",
+                        "DateChangeNbr": "0",
+                        "DepartureDateTime": "2050-01-10T12:10:00+00:00",
+                        "FlightNumber": "0105",
+                        "NumberInParty": "1",
+                        "ResBookDesigCode": "C",
+                        "RPH": "1",
+                        "Status": "HK",
+                        "DepartureAirport": {
+                           "City": "DUBLIN",
+                           "LocationCode": "DUB",
+                           "Terminal": "TERMINAL 2"
+                        },
+                        "ArrivalAirport": {
+                           "City": "LONDON",
+                           "LocationCode": "LHR",
+                           "Name": "HEATHROW",
+                           "Terminal": "TERMINAL 2"
+                        },
+                        "OperatingAirline": {
+                           "Code": "EI",
+                           "FlightNumber": "0105"
+                        },
+                        "MarketingAirline": {
+                           "Code": "EI"
+                        },
+                        "Comment": "LK- /E"
+                     },
+                     {
+                        "ArrivalDateTime": "2050-01-11T19:05:00+00:00",
+                        "ConnectionType": "LASTDEST",
+                        "DateChangeNbr": "0",
+                        "DepartureDateTime": "2050-01-11T17:45:00+00:00",
+                        "FlightNumber": "0132",
+                        "NumberInParty": "1",
+                        "ResBookDesigCode": "T",
+                        "RPH": "2",
+                        "Status": "HK",
+                        "DepartureAirport": {
+                           "City": "LONDON",
+                           "LocationCode": "LHR",
+                           "Name": "HEATHROW",
+                           "Terminal": "TERMINAL 2"
+                        },
+                        "ArrivalAirport": {
+                           "City": "DUBLIN",
+                           "LocationCode": "DUB",
+                           "Terminal": "TERMINAL 2"
+                        },
+                        "OperatingAirline": {
+                           "Code": "EI",
+                           "FlightNumber": "0132"
+                        },
+                        "MarketingAirline": {
+                           "Code": "EI"
+                        },
+                        "Comment": "LK- /E"
+                     }
+                  ]
+               },
+               {
+                  "RPH": "2",
+                  "FlightSegment": [
+                     {
+                        "ArrivalDateTime": "2050-01-10T13:30:00+00:00",
+                        "ConnectionType": "DEST",
+                        "DateChangeNbr": "0",
+                        "DepartureDateTime": "2050-01-10T12:10:00+00:00",
+                        "FlightNumber": "0105",
+                        "NumberInParty": "1",
+                        "ResBookDesigCode": "C",
+                        "RPH": "3",
+                        "Status": "HK",
+                        "DepartureAirport": {
+                           "City": "DUBLIN",
+                           "LocationCode": "DUB",
+                           "Terminal": "TERMINAL 2"
+                        },
+                        "ArrivalAirport": {
+                           "City": "LONDON",
+                           "LocationCode": "LHR",
+                           "Name": "HEATHROW",
+                           "Terminal": "TERMINAL 2"
+                        },
+                        "OperatingAirline": {
+                           "Code": "EI",
+                           "FlightNumber": "0105"
+                        },
+                        "MarketingAirline": {
+                           "Code": "EI"
+                        },
+                        "Comment": "LK- /E"
+                     },
+                     {
+                        "ArrivalDateTime": "2050-01-11T19:05:00+00:00",
+                        "ConnectionType": "LASTDEST",
+                        "DateChangeNbr": "0",
+                        "DepartureDateTime": "2050-01-11T17:45:00+00:00",
+                        "FlightNumber": "0132",
+                        "NumberInParty": "1",
+                        "ResBookDesigCode": "T",
+                        "RPH": "4",
+                        "Status": "HK",
+                        "DepartureAirport": {
+                           "City": "LONDON",
+                           "LocationCode": "LHR",
+                           "Name": "HEATHROW",
+                           "Terminal": "TERMINAL 2"
+                        },
+                        "ArrivalAirport": {
+                           "City": "DUBLIN",
+                           "LocationCode": "DUB",
+                           "Terminal": "TERMINAL 2"
+                        },
+                        "OperatingAirline": {
+                           "Code": "EI",
+                           "FlightNumber": "0132"
+                        },
+                        "MarketingAirline": {
+                           "Code": "EI"
+                        },
+                        "Comment": "LK- /E"
+                     }
+                  ]
+               }
+            ]
+         }
+      },
+      "PriceInfo": {
+         "ItinTotalFare": {
+            "BaseFare": {
+               "Amount": "14.98",
+               "CurrencyCode": "EUR"
+            },
+            "TotalFare": {
+               "Amount": "197.98",
+               "CurrencyCode": "EUR"
+            }
+         },
+         "PTC_FareBreakdowns": {
+            "PTC_FareBreakdown": [
+               {
+                  "PassengerTypeQuantity": {
+                     "Code": "ADT"
+                  },
+                  "FareBasisCodes": {
+                     "FareBasisCode": {
+                        "FlightSegmentRPH": "1",
+                        "#text": "USBR"
+                     }
+                  }
+               },
+               {
+                  "PassengerTypeQuantity": {
+                     "Code": "ADT"
+                  },
+                  "FareBasisCodes": {
+                     "FareBasisCode": {
+                        "FlightSegmentRPH": "2",
+                        "#text": "ZA26USBR"
+                     }
+                  }
+               },
+               {
+                  "PassengerTypeQuantity": {
+                     "Code": "ADT",
+                     "Quantity": "1"
+                  },
+                  "PassengerFare": {
+                     "BaseFare": {
+                        "Amount": "14.98",
+                        "CurrencyCode": "EUR"
+                     },
+                     "Taxes": {
+                        "Tax": [
+                           {
+                              "Amount": "16.95",
+                              "CurrencyCode": "EUR",
+                              "TaxCode": "UP"
+                           },
+                           {
+                              "Amount": "44.39",
+                              "CurrencyCode": "EUR",
+                              "TaxCode": "YQ"
+                           },
+                           {
+                              "Amount": "16.59",
+                              "TaxCode": "GB"
+                           },
+                           {
+                              "Amount": "41.07",
+                              "TaxCode": "UB"
+                           }
+                        ]
+                     },
+                     "UnstructuredFareCalc": "DUB EI LHR 9.99TA26PLUS EI DUB 4.99ZA26PLUS EUR 14.98 END ROE1.000000 XTGB16.59UB41.07",
+                     "Remark": "EUR 57.66 XT"
+                  },
+                  "TravelerRefNumber": {
+                     "RPH": "1"
+                  },
+                  "Endorsements": {
+                     "Endorsement": [
+                        "NO RFND/CHG FEE APPLIES",
+                        "CXL BY FLT DT OR NO VALUE"
+                     ]
+                  }
+               },
+               {
+                  "PassengerTypeQuantity": {
+                     "Code": "ADT"
+                  },
+                  "FareInfo": {
+                     "FareInfo": {
+                        "FareType": "PLS"
+                     },
+                     "PassengerFare": {
+                        "TotalNbrPTC": "1"
+                     }
+                  }
+               },
+               {
+                  "PassengerTypeQuantity": {
+                     "Code": "ADT"
+                  },
+                  "FareInfo": {
+                     "FareInfo": {
+                        "FareType": "PLS"
+                     },
+                     "PassengerFare": {
+                        "TotalNbrPTC": "1"
+                     }
+                  }
+               }
+            ]
+         }
+      },
+      "TravelerInfo": {
+         "AirTraveler": [
+            {
+               "GroupInd": "false",
+               "PassengerTypeCode": "ADT",
+               "PersonName": {
+                  "GivenName": "MAURA",
+                  "Surname": "BOYERS",
+                  "NameTitle": "MRS"
+               },
+               "Telephone": {
+                  "AreaCityCode": "87",
+                  "CountryAccessCode": "353",
+                  "PhoneNumber": "2794585",
+                  "Remark": "M"
+               },
+               "Email": "MAURABOBIMAGINE.IE",
+               "Address": {
+                  "AddressLine": [
+                     "MAURA BOYERS BOYERS",
+                     "22 FAIRWAYS PARK",
+                     "BETTYSTOWN",
+                     "BETTYSTOWN NONE",
+                     "IRELAND"
+                  ],
+                  "CountryName": "IRELAND"
+               },
+               "TravelerRefNumber": {
+                  "RPH": "1"
+               }
+            },
+            {
+               "GroupInd": "false",
+               "PassengerTypeCode": "ADT",
+               "PersonName": {
+                  "GivenName": "Taras",
+                  "Surname": "Grynchuk",
+                  "NameTitle": "MR"
+               },
+               "Telephone": {
+                  "AreaCityCode": "87",
+                  "CountryAccessCode": "353",
+                  "PhoneNumber": "2794585",
+                  "Remark": "M"
+               },
+               "Email": "MAURABOBIMAGINE.IE",
+               "Address": {
+                  "AddressLine": [
+                     "MAURA BOYERS BOYERS",
+                     "22 FAIRWAYS PARK",
+                     "BETTYSTOWN",
+                     "BETTYSTOWN NONE",
+                     "IRELAND"
+                  ],
+                  "CountryName": "IRELAND"
+               },
+               "TravelerRefNumber": {
+                  "RPH": "2"
+               }
+            },
+            {
+               "GroupInd": "false",
+               "PassengerTypeCode": "ADT",
+               "PersonName": {
+                  "GivenName": "Oleg",
+                  "Surname": "Maksymuk",
+                  "NameTitle": "MR"
+               },
+               "Telephone": {
+                  "AreaCityCode": "87",
+                  "CountryAccessCode": "353",
+                  "PhoneNumber": "2794585",
+                  "Remark": "M"
+               },
+               "Email": "MAURABOBIMAGINE.IE",
+               "Address": {
+                  "AddressLine": [
+                     "MAURA BOYERS BOYERS",
+                     "22 FAIRWAYS PARK",
+                     "BETTYSTOWN",
+                     "BETTYSTOWN NONE",
+                     "IRELAND"
+                  ],
+                  "CountryName": "IRELAND"
+               },
+               "TravelerRefNumber": {
+                  "RPH": "3"
+               }
+            },
+            {
+               "GroupInd": "false",
+               "PassengerTypeCode": "ADT",
+               "PersonName": {
+                  "GivenName": "Ihor",
+                  "Surname": "Sereda",
+                  "NameTitle": "MR"
+               },
+               "Telephone": {
+                  "AreaCityCode": "87",
+                  "CountryAccessCode": "353",
+                  "PhoneNumber": "2794585",
+                  "Remark": "M"
+               },
+               "Email": "MAURABOBIMAGINE.IE",
+               "Address": {
+                  "AddressLine": [
+                     "MAURA BOYERS BOYERS",
+                     "22 FAIRWAYS PARK",
+                     "BETTYSTOWN",
+                     "BETTYSTOWN NONE",
+                     "IRELAND"
+                  ],
+                  "CountryName": "IRELAND"
+               },
+               "TravelerRefNumber": {
+                  "RPH": "4"
+               }
+            }
+         ]
+      },
+      "Fulfillment": {
+         "PaymentDetails": {
+            "PaymentDetail": {
+               "PaymentCard": {
+                  "ExpireDate": "0716",
+                  "CardType": {
+                     "Code": "VI",
+                     "#text": "Other_"
+                  },
+                  "CardNumber": {
+                     "PlainText": "1*VI************6610/0716"
+                  }
+               },
+               "PaymentAmount": {
+                  "Amount": "197.98",
+                  "CurrencyCode": "EUR"
+               }
+            }
+         }
+      },
+      "Ticketing": [
+         {
+            "FlightSegmentRefNumber": "3",
+            "PassengerTypeCode": "ADT",
+            "TicketDocumentNbr": "05324767523863C1",
+            "TicketingStatus": "E",
+            "TravelerRefNumber": "4"
+         },
+         {
+            "FlightSegmentRefNumber": "2",
+            "PassengerTypeCode": "ADT",
+            "TicketDocumentNbr": "05324767523863C2",
+            "TicketingStatus": "E",
+            "TravelerRefNumber": "2"
+         },
+         {
+            "FlightSegmentRefNumber": "1",
+            "PassengerTypeCode": "ADT",
+            "TicketDocumentNbr": "05324767523863C1",
+            "TicketingStatus": "E",
+            "TravelerRefNumber": "2"
+         },
+         {
+            "FlightSegmentRefNumber": "4",
+            "PassengerTypeCode": "ADT",
+            "TicketDocumentNbr": "05324767523863C1",
+            "TicketingStatus": "E",
+            "TravelerRefNumber": "3"
+         },
+         {
+            "FlightSegmentRefNumber": "1",
+            "PassengerTypeCode": "ADT",
+            "TicketDocumentNbr": "05324767523863C1",
+            "TicketingStatus": "E",
+            "TravelerRefNumber": "1"
+         },
+         {
+            "FlightSegmentRefNumber": "2",
+            "PassengerTypeCode": "ADT",
+            "TicketDocumentNbr": "05324767523863C2",
+            "TicketingStatus": "E",
+            "TravelerRefNumber": "1"
+         },
+         {
+            "FlightSegmentRefNumber": "4",
+            "PassengerTypeCode": "ADT",
+            "TicketDocumentNbr": "05324767523863C1",
+            "TicketingStatus": "E",
+            "TravelerRefNumber": "4"
+         },
+         {
+            "FlightSegmentRefNumber": "3",
+            "PassengerTypeCode": "ADT",
+            "TicketDocumentNbr": "05324767523863C1",
+            "TicketingStatus": "E",
+            "TravelerRefNumber": "3"
+         }
+      ],
+      "BookingReferenceID": [
+         {
+            "ID": "2BQDQF",
+            "ID_Context": "0022CAB344",
+            "TPA_Extensions": {
+               "PnrPk": "0022CAB34420141126",
+               "TripSummary": {
+                  "Destination": "LHR",
+                  "Origin": "DUB"
+               },
+               "AerLingusOSI": [
+                  {
+                     "Code": "PLUS",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "O-CBG SFE"
+                  },
+                  {
+                     "Code": "PLUS",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "R-CBG SFE"
+                  },
+                  {
+                     "Code": "FFM",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "ARKUP ADT DUBLHR TA26PLUS EUR25.00 O-"
+                  },
+                  {
+                     "Code": "FFM",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "ARKUP ADT LHRDUB ZA26PLUS EUR25.00 R-"
+                  },
+                  {
+                     "Code": "HANDLING FEE",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "EUR14.00"
+                  },
+                  {
+                     "Code": "TKT/",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "ETK"
+                  },
+                  {
+                     "Code": "SAR,FFM,EUR",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "50.00/ET/MRR783897/141126/CCVI"
+                  },
+                  {
+                     "Code": "SAR,CBM,EUR",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "0.00/ET/MRR783898/141126/CCVI"
+                  },
+                  {
+                     "Code": "WIN",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "true",
+                        "#text": "EI"
+                     },
+                     "Text": "CUSTOMER POLICY ALSIE1000041854"
+                  },
+                  {
+                     "Code": "FFM",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "false",
+                        "#text": "EI"
+                     },
+                     "Text": "U 01 FARE FAMILY PLUS FEE"
+                  },
+                  {
+                     "Code": "AFRO",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "false",
+                        "#text": "EI"
+                     },
+                     "Text": "EUR/F9.99/X16.95UP/Y17.05YQ/T43.99"
+                  },
+                  {
+                     "Code": "AFRI",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "false",
+                        "#text": "EI"
+                     },
+                     "Text": "EUR/F4.99/X16.59GB/Y41.07UB/Z27.34YQ/T89.99"
+                  },
+                  {
+                     "Code": "AFRT",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "false",
+                        "#text": "EI"
+                     },
+                     "Text": "EUR/F14.98/X16.95UP/Y44.39YQ/Z57.66XT/T133.98"
+                  },
+                  {
+                     "Code": "TDPRCD",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "false",
+                        "#text": "EI"
+                     },
+                     "Text": "A006298271"
+                  },
+                  {
+                     "Code": "EMAIL",
+                     "Airline": {
+                        "Code": "EI",
+                        "Division": "false",
+                        "#text": "EI"
+                     },
+                     "Text": "SENT FROM ASTRAL"
+                  }
+               ],
+               "EMD_Original": [
+                  {
+                     "EMD_Type": "EMD-A",
+                     "Quantity": "1",
+                     "RPH": "1",
+                     "TotalFltSegQty": "0",
+                     "PaymentDetail": {
+                        "PaymentCard": {
+                           "CardType": {
+                              "Code": "CCVI",
+                              "#text": "Other_"
+                           }
+                        },
+                        "PaymentAmount": {
+                           "Amount": "50.00",
+                           "CurrencyCode": "EUR"
+                        }
+                     },
+                     "TicketDocument": {
+                        "DateOfIssue": "2014-11-26",
+                        "TicketDocumentNbr": "783897",
+                        "CouponInfo": {
+                           "Value": "50.00",
+                           "SoldFlightSegmentRPH": "0"
+                        }
+                     }
+                  },
+                  {
+                     "EMD_Type": "EMD-A",
+                     "Quantity": "1",
+                     "RPH": "1",
+                     "TotalFltSegQty": "0",
+                     "PaymentDetail": {
+                        "PaymentCard": {
+                           "CardType": {
+                              "Code": "CCVI",
+                              "#text": "Other_"
+                           }
+                        },
+                        "PaymentAmount": {
+                           "Amount": "0.00",
+                           "CurrencyCode": "EUR"
+                        }
+                     },
+                     "TicketDocument": {
+                        "DateOfIssue": "2014-11-26",
+                        "TicketDocumentNbr": "783898",
+                        "CouponInfo": {
+                           "Value": "0.00",
+                           "SoldFlightSegmentRPH": "1",
+                           "ReasonForIssuance": {
+                              "Description": "WSMB"
+                           }
+                        }
+                     }
+                  },
+                  {
+                     "EMD_Type": "EMD-A",
+                     "Quantity": "1",
+                     "RPH": "1",
+                     "TotalFltSegQty": "0",
+                     "PaymentDetail": {
+                        "PaymentCard": {
+                           "CardType": {
+                              "Code": "CCVI",
+                              "#text": "Other_"
+                           }
+                        },
+                        "PaymentAmount": {
+                           "Amount": "0.00",
+                           "CurrencyCode": "EUR"
+                        }
+                     },
+                     "TicketDocument": {
+                        "DateOfIssue": "2014-11-26",
+                        "TicketDocumentNbr": "783898",
+                        "CouponInfo": {
+                           "Value": "0.00",
+                           "SoldFlightSegmentRPH": "2",
+                           "ReasonForIssuance": {
+                              "Description": "WSMB"
+                           }
+                        }
+                     }
+                  }
+               ]
+            }
+         },
+         {
+            "ID": "0022CAB34420141126",
+            "ID_Context": "PNRPK"
+         },
+         {
+            "ID": "A006298271",
+            "ID_Context": "Datalex"
+         }
+      ],
+      "EMD_Info": [
+         {
+            "EMD_Type": "EMD-A",
+            "TotalFltSegQty": "0",
+            "TravelerRefNumber": {
+               "RPH": "0"
+            },
+            "TicketDocument": {
+               "Code": "CCG",
+               "DateOfIssue": "2014-11-26Z",
+               "TicketDocumentNbr": "783896",
+               "CouponInfo": {
+                  "Value": "14",
+                  "SoldFlightSegmentRPH": "1"
+               }
+            }
+         },
+         {
+            "EMD_Type": "EMD-A",
+            "TotalFltSegQty": "0",
+            "TravelerRefNumber": {
+               "RPH": "0"
+            },
+            "TicketDocument": {
+               "Code": "FFM",
+               "DateOfIssue": "2014-11-26Z",
+               "TicketDocumentNbr": "783897",
+               "CouponInfo": {
+                  "Value": "50",
+                  "SoldFlightSegmentRPH": "1"
+               }
+            }
+         },
+         {
+            "EMD_Type": "EMD-A",
+            "TotalFltSegQty": "0",
+            "TravelerRefNumber": {
+               "RPH": "0"
+            },
+            "TicketDocument": {
+               "Code": "CBM",
+               "DateOfIssue": "2014-11-26Z",
+               "TicketDocumentNbr": "783898",
+               "CouponInfo": {
+                  "Value": "0",
+                  "SoldFlightSegmentRPH": "1"
+               }
+            }
+         },
+         {
+            "TotalFltSegQty": "0",
+            "TicketDocument": {
+               "Code": "T/E",
+               "DateOfIssue": "2014-11-26",
+               "TicketDocumentNbr": "6752386",
+               "CouponInfo": null
+            }
+         },
+         {
+            "Quantity": "1",
+            "EMD_Type": "EMD-A",
+            "RPH": "1",
+            "TotalFltSegQty": "0",
+            "TravelerRefNumber": {
+               "RPH": "0"
+            },
+            "PaymentDetail": {
+               "PaymentCard": {
+                  "CardType": {
+                     "Code": "CCVI",
+                     "#text": "Other_"
+                  }
+               },
+               "PaymentAmount": {
+                  "Amount": "50",
+                  "CurrencyCode": "EUR"
+               }
+            },
+            "TicketDocument": {
+               "Code": "FFM",
+               "CodeContext": "FFMU",
+               "DateOfIssue": "2014-11-26",
+               "TicketDocumentNbr": "783897",
+               "CouponInfo": {
+                  "Value": "50",
+                  "SoldFlightSegmentRPH": "0"
+               }
+            }
+         },
+         {
+            "Quantity": "1",
+            "EMD_Type": "EMD-A",
+            "RPH": "1",
+            "TotalFltSegQty": "0",
+            "TravelerRefNumber": {
+               "RPH": "1"
+            },
+            "PaymentDetail": {
+               "PaymentCard": {
+                  "CardType": {
+                     "Code": "CCVI",
+                     "#text": "Other_"
+                  }
+               },
+               "PaymentAmount": {
+                  "Amount": "0",
+                  "CurrencyCode": "EUR"
+               }
+            },
+            "TicketDocument": {
+               "Code": "CBM",
+               "CodeContext": "BGCH",
+               "DateOfIssue": "2014-11-26",
+               "TicketDocumentNbr": "783898",
+               "CouponInfo": {
+                  "Value": "0",
+                  "SoldFlightSegmentRPH": "1",
+                  "ReasonForIssuance": {
+                     "Description": "WSMB"
+                  }
+               }
+            }
+         },
+         {
+            "Quantity": "1",
+            "EMD_Type": "EMD-A",
+            "RPH": "1",
+            "TotalFltSegQty": "0",
+            "TravelerRefNumber": {
+               "RPH": "1"
+            },
+            "PaymentDetail": {
+               "PaymentCard": {
+                  "CardType": {
+                     "Code": "CCVI",
+                     "#text": "Other_"
+                  }
+               },
+               "PaymentAmount": {
+                  "Amount": "0",
+                  "CurrencyCode": "EUR"
+               }
+            },
+            "TicketDocument": {
+               "Code": "CBM",
+               "CodeContext": "BGCH",
+               "DateOfIssue": "2014-11-26",
+               "TicketDocumentNbr": "783898",
+               "CouponInfo": {
+                  "Value": "0",
+                  "SoldFlightSegmentRPH": "2",
+                  "ReasonForIssuance": {
+                     "Description": "WSMB"
+                  }
+               }
+            }
+         }
+      ],
+      "Offer": {
+         "Priced": [
+            {
+               "FlightSegmentRPH": "1",
+               "TravelerRPH": "1",
+               "ServiceFamily": {
+                  "ServiceCode": "A_FreeBaggageAllowance",
+                  "ProductGroup": {
+                     "Code": "BGCH",
+                     "SubGroup": {
+                        "Code": "WSMB",
+                        "AdditionalCode": "CBM"
+                     }
+                  }
+               },
+               "Pricing": {
+                  "Amount": "0.000",
+                  "PricingCurrency": "EUR",
+                  "TravelerRPH": "1",
+                  "OfferQty": "1"
+               }
+            },
+            {
+               "FlightSegmentRPH": "2",
+               "TravelerRPH": "1",
+               "ServiceFamily": {
+                  "ServiceCode": "A_FreeBaggageAllowance",
+                  "ProductGroup": {
+                     "Code": "SEAT",
+                     "SubGroup": {
+                        "Code": "WSC-2",
+                        "AdditionalCode": "CBM"
+                     }
+                  }
+               },
+               "Pricing": {
+                  "Amount": "0.000",
+                  "PricingCurrency": "EUR",
+                  "TravelerRPH": "1",
+                  "OfferQty": "1"
+               }
+            },
+            {
+               "FlightSegmentRPH": "1",
+               "TravelerRPH": "2",
+               "ServiceFamily": {
+                  "ServiceCode": "A_FreeBaggageAllowance",
+                  "ProductGroup": {
+                     "Code": "BGCH",
+                     "SubGroup": {
+                        "Code": "WSMB",
+                        "AdditionalCode": "CBM"
+                     }
+                  }
+               },
+               "Pricing": {
+                  "Amount": "0.000",
+                  "PricingCurrency": "EUR",
+                  "TravelerRPH": "1",
+                  "OfferQty": "1"
+               }
+            },
+            {
+               "FlightSegmentRPH": "2",
+               "TravelerRPH": "2",
+               "ServiceFamily": {
+                  "ServiceCode": "A_FreeBaggageAllowance",
+                  "ProductGroup": {
+                     "Code": "SEAT",
+                     "SubGroup": {
+                        "Code": "WSC-7",
+                        "AdditionalCode": "CBM"
+                     }
+                  }
+               },
+               "Pricing": {
+                  "Amount": "0.000",
+                  "PricingCurrency": "EUR",
+                  "TravelerRPH": "1",
+                  "OfferQty": "1"
+               }
+            },
+            {
+               "FlightSegmentRPH": "3",
+               "TravelerRPH": "3",
+               "ServiceFamily": {
+                  "ServiceCode": "A_FreeBaggageAllowance",
+                  "ProductGroup": {
+                     "Code": "BGCH",
+                     "SubGroup": {
+                        "Code": "WSMB",
+                        "AdditionalCode": "CBM"
+                     }
+                  }
+               },
+               "Pricing": {
+                  "Amount": "0.000",
+                  "PricingCurrency": "EUR",
+                  "TravelerRPH": "1",
+                  "OfferQty": "1"
+               }
+            },
+            {
+               "FlightSegmentRPH": "4",
+               "TravelerRPH": "3",
+               "ServiceFamily": {
+                  "ServiceCode": "A_FreeBaggageAllowance",
+                  "ProductGroup": {
+                     "Code": "SEAT",
+                     "SubGroup": {
+                        "Code": "WSC-7",
+                        "AdditionalCode": "CBM"
+                     }
+                  }
+               },
+               "Pricing": {
+                  "Amount": "0.000",
+                  "PricingCurrency": "EUR",
+                  "TravelerRPH": "1",
+                  "OfferQty": "1"
+               }
+            },
+            {
+               "FlightSegmentRPH": "4",
+               "TravelerRPH": "4",
+               "ServiceFamily": {
+                  "ServiceCode": "A_FreeBaggageAllowance",
+                  "ProductGroup": {
+                     "Code": "SKIN",
+                     "SubGroup": {
+                        "Code": "LNGE",
+                        "AdditionalCode": "CBM"
+                     }
+                  }
+               },
+               "Pricing": {
+                  "Amount": "0.000",
+                  "PricingCurrency": "EUR",
+                  "TravelerRPH": "1",
+                  "OfferQty": "1"
+               }
+            },
+            {
+               "FlightSegmentRPH": "4",
+               "TravelerRPH": "4",
+               "ServiceFamily": {
+                  "ServiceCode": "A_FreeBaggageAllowance",
+                  "ProductGroup": {
+                     "Code": "SEAT",
+                     "SubGroup": {
+                        "Code": "WSC-3",
+                        "AdditionalCode": "CBM"
+                     }
+                  }
+               },
+               "Pricing": {
+                  "Amount": "0.000",
+                  "PricingCurrency": "EUR",
+                  "TravelerRPH": "1",
+                  "OfferQty": "1"
+               }
+            }
+         ]
+      }
+   }
+}

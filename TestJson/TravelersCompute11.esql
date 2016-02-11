@@ -1,0 +1,45 @@
+
+
+CREATE COMPUTE MODULE TravelersCompute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+	--SET OutputRoot = InputRoot;	
+	--SET OutputRoot.JSON.Data = 	InputRoot.JSON.Data;
+		
+		
+--		SET OutputRoot.JSON.Data.age =  InputRoot.JSON.Data.age + 22;   -- Set age to 21
+--		SET OutputRoot.JSON.Data.belongings.Item[4] = 'an other';
+--		SET OutputRoot.JSON.Data.belongings.Item[5] = 'and another';
+
+	
+		SET OutputRoot.JSON.Data = 	InputRoot.JSON.Data;
+		RETURN TRUE;
+		
+		
+		
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE dataRef REFERENCE TO OutputRoot.JSON.Data;
+		
+		DECLARE S CHAR;
+		DECLARE p ROW;
+		DECLARE I INT 1;
+		
+		SET p.belong[] = 	SELECT  bel as val
+							FROM	InputRoot.JSON.Data.belongings.Item[] AS bel
+									;		
+		FOR belong AS p.belong[] DO
+			SET S = belong.val;
+			
+			SET dataRef.output[I].obj.name = S;
+			SET dataRef.output[I].obj.a = 'aaa';
+			SET dataRef.output[I].obj.b = 'bbb';		
+			
+			
+			SET I = I + 1;
+		END FOR;	
+		RETURN TRUE;
+	END;
+
+
+END MODULE;

@@ -1,0 +1,80 @@
+/*
+Sample program for use with IBM Integration Bus
+© Copyright International Business Machines Corporation 2010
+Licensed Materials - Property of IBM
+*/
+
+CREATE COMPUTE MODULE MqJsonClientConsumer_BuildRestRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copy the whole message tree to output
+		SET OutputRoot = InputRoot;
+
+		-- Save the MDMQ for later reply
+		SET Environment.SaveSate.MQMD = InputRoot.MQMD;
+
+		-- For REST HTTP Method sets the operation
+		-- For this MQ wrapper we use the Input queue name
+		DECLARE restActionQname CHARACTER InputRoot.MQMD.SourceQueue;
+
+		-- For REST last section of the Request URI should name the target object
+		-- We require the JSON MQ Input message to provide the title
+		DECLARE targObj CHARACTER;
+		DECLARE titleRef REFERENCE TO InputRoot.JSON.Data.Title;
+		IF LASTMOVE(titleRef) THEN
+			SET targObj = titleRef;
+		ELSE
+			-- No target, this is an error for all cases other than GET (Retrieve)
+			--  or if we have an array of objects in the input
+			IF restActionQname = 'RETRIEVE_IN1' 
+			OR BITAND(FIELDTYPE(InputRoot.JSON.Data.RestMsg),JSON.Array) = JSON.Array THEN
+				SET targObj = '*';  -- Ask XMLMQApp to retrieve all
+			ELSE
+				-- Error
+				THROW USER EXCEPTION MESSAGE 2952 VALUES('No Target in input message');
+				RETURN FALSE;
+			END IF;
+		END IF;
+
+		--  Set the REST HTTP method property in local environment based on input queue name
+		CASE restActionQname
+			WHEN 'CREATE_IN1' THEN
+				SET OutputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'POST';
+			WHEN 'RETRIEVE_IN1' THEN
+				SET OutputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'GET';
+			WHEN 'UPDATE_IN1' THEN
+				SET OutputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'PUT';
+			WHEN 'DELETE_IN1' THEN
+				SET OutputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'DELETE';
+		END CASE;
+		
+		-- REST requires we extend the target URL with the object the action is for
+		--  this is the title from the input messgae
+		-- NOTE: 7080 is the default Broker HTTP port, adjust if not using default value
+		SET OutputLocalEnvironment.Destination.HTTP.RequestURL = 'http://localhost:7080/jsonrequest/'|| 
+		                                                         targObj;
+
+		
+		RETURN TRUE;
+	END;
+
+END MODULE;
+
+
+CREATE COMPUTE MODULE MqJsonClientConsumer_RestoreMQMD
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- The HTTP Request node was set to simply replace the message
+		-- tree with the HTTP responce. So we need to remove the
+		-- HTTP headers and restore the MQMD
+		
+		-- Copy the Properties over
+		SET OutputRoot.Properties = InputRoot.Properties;
+		
+		-- Restore the MDMQ for reply
+		SET OutputRoot.MQMD = Environment.SaveSate.MQMD;
+		
+		-- Copy the JSON Data over
+		SET OutputRoot.JSON = InputRoot.JSON;
+	END;
+END MODULE;

@@ -1,0 +1,117 @@
+/*
+Sample program for use with IBM Integration Bus
+© Copyright International Business Machines Corporation 2010
+Licensed Materials - Property of IBM
+*/
+
+CREATE COMPUTE MODULE Compute_Xml_Json
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Just copy the Properties over
+		SET OutputRoot.Properties = InputRoot.Properties;
+		
+		-- Save the MDMQ for later reply
+		SET Environment.SaveSate.MQMD = InputRoot.MQMD;
+		
+		-- Look at the input XML and determine the action and use this to set the HTTP REST Method
+		--   <CD>  <Action>Retrieve</Action>
+		DECLARE action CHAR InputRoot.XMLNSC.Collection.Action;
+		--  Set the REST HTTP method property in local environment
+		CASE action
+			WHEN 'Retrieve' THEN
+				SET OutputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'GET';
+			WHEN 'Create' THEN
+				SET OutputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'POST';
+			WHEN 'Update' THEN
+				SET OutputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'PUT';
+			WHEN 'Delete' THEN
+				SET OutputLocalEnvironment.Destination.HTTP.RequestLine.Method = 'DELETE';
+		END CASE;
+		
+		-- REST requires we extend the target URL with the object the action is for
+		--  this is the title from the input messgae
+		-- NOTE: 7080 is the default broker HTTP Input node port
+		SET OutputLocalEnvironment.Destination.HTTP.RequestURL = 'http://localhost:7080/jsonrequest/'
+									  || InputRoot.XMLNSC.Collection.CD.Title;
+		
+		-- Build the JSON message from the XML document
+		-- in our sample the JSON data structure directly matches
+		-- the XML elements, we just need to mark the Members element
+		-- as a JSON array so that the repeating member child elements
+		-- become anonymous items in the array
+		SET OutputRoot.JSON.Data = InputRoot.XMLNSC.Collection.CD;
+		DECLARE membersArray REFERENCE TO OutputRoot.JSON.Data.Members;
+		IF LASTMOVE(membersArray) THEN
+			-- Format the Members element as a JSON Array
+			SET  membersArray TYPE = JSON.Array;
+		END IF;
+		
+		RETURN TRUE;
+		
+	END;
+
+END MODULE;
+
+
+CREATE COMPUTE MODULE Compute_Json_Xml
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- The message tree has been replaced with the HTTP reply
+		-- We need to drop the HTTP header and restore the MQ header
+		-- then convert the JSON response into XML 
+		
+		-- Just copy the Properties over
+		SET OutputRoot.Properties = InputRoot.Properties;
+		
+		-- Restore the MDMQ to enable the MQ Ouput node send the MQ reply
+		SET OutputRoot.MQMD = Environment.SaveSate.MQMD;
+		
+		-- Build an output XML response from the JSON data
+		IF BITAND(FIELDTYPE(InputRoot.JSON.Data),JSON.Array) = JSON.Array THEN
+			-- We have a JSON Array
+			-- In our sample the JSON data and XML document are a direct match
+			-- So we can just copy the tree over into the XML document 
+			-- and then rename the JSON anonymous array elements with the
+			-- required XML repeating element name
+			SET OutputRoot.XMLNSC.CollectionResponse = InputRoot.JSON.Data;
+			-- Rename JSON array elements to "CD" for the XML format
+			DECLARE DI INTEGER 1;
+			DECLARE DJ INTEGER CARDINALITY(OutputRoot.XMLNSC.CollectionResponse.Item[]);
+			WHILE DI <= DJ DO
+				SET OutputRoot.XMLNSC.CollectionResponse.Item[>] NAME = 'CD';
+				-- Rename JSON Members array elements to "Member" for the XML format
+				DECLARE MI INTEGER 1;
+				DECLARE MJ INTEGER CARDINALITY(OutputRoot.XMLNSC.CollectionResponse.CD[<].Members.Item[]);
+				WHILE MI <= MJ DO
+					SET OutputRoot.XMLNSC.CollectionResponse.CD[<].Members.Item[>] NAME = 'Member';
+					SET MI = MI+1;
+				END WHILE;
+				SET DI = DI+1;
+			END WHILE;
+			
+		ELSE
+			-- We have either an empty response or a single JSON object
+			DECLARE titleRef REFERENCE TO InputRoot.JSON.Data.Title;
+			IF LASTMOVE(titleRef) THEN
+				-- We have a single JSON Object
+				-- In our sample the JSON data directly reflects the XML
+				-- format so we can just copy the JSON tree into the document
+				-- and then rename the JSON anonymous array elements with the
+				-- required XML repeating element name
+				SET OutputRoot.XMLNSC.CollectionResponse.CD = InputRoot.JSON.Data;
+				-- Rename JSON array elements to "Member" for the XML format
+				DECLARE MI INTEGER 1;
+				DECLARE MJ INTEGER CARDINALITY(OutputRoot.XMLNSC.CollectionResponse.CD.Members.Item[]);
+				WHILE MI <= MJ DO
+					SET OutputRoot.XMLNSC.CollectionResponse.CD.Members.Item[>] NAME = 'Member';
+					SET MI = MI+1;
+				END WHILE;
+			ELSE
+				-- Copy the the possible JSON Status to XML document
+				SET OutputRoot.XMLNSC.CollectionResponse = InputRoot.JSON.Data;		
+			END IF;
+		END IF;
+		RETURN TRUE;
+	END;
+
+END MODULE;
