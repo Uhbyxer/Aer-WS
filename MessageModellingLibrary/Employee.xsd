@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:csv="http://www.ibm.com/dfdl/CommaSeparatedFormat" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/CommaSeparatedFormat" schemaLocation="IBMdefined/CommaSeparatedFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format documentFinalTerminatorCanBeMissing="yes" encoding="{$dfdl:encoding}" escapeSchemeRef="csv:CSVEscapeScheme" ref="csv:CommaSeparatedFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:element ibmSchExtn:docRoot="true" name="Employee">
+		<xsd:complexType>
+			<xsd:sequence dfdl:separator="">
+				<xsd:element dfdl:terminator="%CR;%LF;" name="header">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ibmDfdlExtn:sampleValue="head_value1" name="CompanyName" type="xsd:string"/>
+							<xsd:element ibmDfdlExtn:sampleValue="head_value2" name="EmpCount" type="xsd:string"/>							
+							<xsd:element ibmDfdlExtn:sampleValue="head_value3" name="Adress" type="xsd:string"/>							
+                            <xsd:element ibmDfdlExtn:sampleValue="head_value4" name="City" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="head_value5" name="Country" type="xsd:string"/>
+                                                                                                                                                                                                                            </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>			
+				<xsd:element dfdl:occursCountKind="implicit" dfdl:terminator="%CR;%LF;" maxOccurs="unbounded" name="record">
+					<xsd:complexType>
+						<xsd:sequence> 
+							<xsd:element ibmDfdlExtn:sampleValue="value1" name="EmpNo" type="xsd:string"/>
+							<xsd:element ibmDfdlExtn:sampleValue="value2" name="FirstName" type="xsd:string"/>
+							<xsd:element ibmDfdlExtn:sampleValue="value3" name="MidInit" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value4" name="LastName" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value5" name="WorkDept" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value6" name="PhoneNo" type="xsd:string"/>
+                            <xsd:element name="HireDate" type="xsd:date"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value8" name="Job" type="xsd:string"/>
+                            <xsd:element dfdl:textNumberPattern="#0" name="EdLevel" type="xsd:int"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value10" name="Sex" type="xsd:string"/>
+                            <xsd:element ibmDfdlExtn:sampleValue="value11" name="BirthDate" type="xsd:string"/>
+                            <xsd:element dfdl:textNumberPattern="#0.###" name="Salary" type="xsd:decimal"/>
+                        </xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+
+</xsd:schema>

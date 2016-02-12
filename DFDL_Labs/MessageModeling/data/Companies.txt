@@ -1,0 +1,29 @@
+Header{recDesc:My Company records,compCount:5}
+Company[compName=BBC
+Employee(empNum=111111|dept=500|empName=Alice Wong|Addr:8200 Warden Ave,"Markham, Ont",L3G 1H7|tel=905-347-5649|sal=135599.95)
+Employee(empNum=222222|dept=500|empName=James May|Addr:23 The Cuttings,Chatham, CH2 2PR|tel=208-203-1332|sal=6189599.95)
+Employee(empNum=333333|dept=310|empName=Richard Hammond|Addr:16 Great Windmill St,London,W2 3RJ|tel=207-445-2955|sal=599.95)
+Employee(empNum=444444|dept=230|empName=Jeremy Clarkeson|Addr:"Rose Cottage, Pea Dr",Gloucester,GL01 2NM|tel=743-123-4567|sal=5599.95)
+Employee(empNum=555555|dept=650|empName=Humphrey Littleton|Addr:416 Regent Street,London,NW1 1QT|tel=207-883-1238|sal=99999.95)
+]
+Company[compName=IBM
+Employee(empNum=111111|dept=9876|empName=Arnold Buzby|Addr:1000 The Close,Winchester,L3G 1H7|tel=905-345-5649|sal=23.54)
+Employee(empNum=222222|dept=2350|empName=Digby Jones|Addr:1 Porstmouth Rd,Southampton,CH2 2PR|tel=208-203-1332|sal=599.95)
+]
+Company[compName=Big Bank
+Employee(empNum=111111|dept=1|empName=Mr Big|Addr:99 Sicillian Dr,"Palermo, NY",L3G 1H7|tel=905-347-5649|sal=4599.00)
+Employee(empNum=000001|dept=1|empName=Homer Simpson|Addr:Two's complement,Springfield,1011001|tel=208-203-1332|sal=189599.94)
+Employee(empNum=333333|dept=2|empName=Lucy Wetherell|Addr:23 Gas St,Bolton,W2 3RJ|tel=207-445-2955|sal=599.95)
+]
+Company[compName=Huge Store
+Employee(empNum=111111|dept=20|empName=George Formby|Addr:1 HotPot Rd,Lancashire,L3G 1H7|tel=905-347-5649|sal=85599.95)
+Employee(empNum=222222|dept=18|empName=Ivor Engine|Addr:1234 London Rd,Llangollen,CH2 2PR|tel=208-203-1332|sal=9.95)
+]
+Company[compName=Corner Store
+Employee(empNum=100001|dept=4456|empName=Captain Flack|Addr:The Fire Station,Trumpton,L3G 1H7|tel=905-347-5649|sal=12345.95)
+Employee(empNum=100002|dept=4429|empName=Captain Pugwash|Addr:The Black Pig,Smugglers Cove,CH2 2PR|tel=208-203-1332|sal=654321.91)
+Employee(empNum=100003|dept=4420|empName=Lady Penelope|Addr:Creighton-Ward Mansion,Buckinghamshire,W2 3RJ|tel=207-445-2955|sal=599.95)
+Employee(empNum=100004|dept=4483|empName=Jeff Tracy|Addr:Tracy Island,Pacific Ocean,GL012NM|tel=743-123-4567|sal=75599.23)
+Employee(empNum=100005|dept=4400|empName=Gordon Tracy|Addr:Tracy Island,Pacific Ocean,NW1 1QT|tel=207-883-1238|sal=666.67)
+]
+Trailer{chksum:1234567890}

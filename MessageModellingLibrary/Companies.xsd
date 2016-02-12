@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:recSepFieldsFmt="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <xsd:include schemaLocation="Company.xsd"/>
+    <xsd:import namespace="http://www.ibm.com/dfdl/RecordSeparatedFieldFormat" schemaLocation="IBMdefined/RecordSeparatedFieldFormat.xsd"/>
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format byteOrder="{$dfdl:byteOrder}" encoding="{$dfdl:encoding}" escapeSchemeRef="recSepFieldsFmt:RecordEscapeScheme" occursCountKind="fixed" ref="recSepFieldsFmt:RecordSeparatedFieldsFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:element ibmSchExtn:docRoot="true" name="Companies">
+		<xsd:complexType>
+			<xsd:sequence dfdl:initiatedContent="yes" dfdl:separator="%CR;%LF;%WSP*;">
+				<xsd:element dfdl:initiator="Header{" name="Header">
+					<xsd:complexType>
+						<xsd:sequence dfdl:initiatedContent="yes" dfdl:separator="" dfdl:separatorSuppressionPolicy="trailingEmpty">
+							<xsd:element dfdl:initiator="iHead1" ibmDfdlExtn:sampleValue="head_value1" name="RecordDescription" type="xsd:string"/>
+							<xsd:element dfdl:initiator="compCount:" dfdl:textNumberPattern="#0" name="CompanyCount" type="xsd:integer"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+                								<xsd:sequence dfdl:separator="">
+          <xsd:element ref="Company"/>
+        </xsd:sequence>
+                <xsd:element dfdl:initiator="Trailer{" name="Trailer">
+					<xsd:complexType>
+						<xsd:sequence dfdl:initiatedContent="yes" dfdl:separator="%#124;" dfdl:separatorSuppressionPolicy="trailingEmpty">
+							<xsd:element dfdl:initiator="iTrail1" ibmDfdlExtn:sampleValue="trailer_value1" name="chksum" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+                			            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>
